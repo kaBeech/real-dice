@@ -3,11 +3,11 @@ module BinaryString (binaryString) where
 -- This data is gathered from rolling dice as well as drawing poker chips out
 -- of a bag, stacking them up, and using a heads/tails schema to get the
 -- values
---
+
 -- I'm using a string of "1"s and "0"s to represent the binary data because
 -- it's easy to manually type in while I'm collecting data and it's easy to
 -- parse into other data
---
+
 -- How did I get binary data from the dice? Does Heads equal "1" or
 -- does Tails? What do Heads and Tails mean on a poker chip anyway? Who knows?
 -- I'm willfully not remembering that information between sessions of
