@@ -1,4 +1,4 @@
-module BinaryString (binaryStringFullLength, binaryStringPrimeLength) where
+module RawDataCollection (binaryStringFullLength, binaryStringPrimeLength) where
 
 import Prime (getGreatestPrimeLessThan)
 
