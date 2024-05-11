@@ -67,7 +67,8 @@ library
     -- Modules exported by the library.
     exposed-modules:  BinaryString,
                       Pseudorandom,
-                      StandardBooleanList
+                      StandardBooleanList,
+                      Prime
 
     -- Modules included in this library but not exported.
     -- other-modules:
