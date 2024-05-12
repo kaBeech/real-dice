@@ -1,7 +1,7 @@
-module Prime (getGreatestPrimeLessThan) where
+module Prime (greatestPrimeNotGreaterThan) where
 
-getGreatestPrimeLessThan :: Int -> Int
-getGreatestPrimeLessThan n = head $ filter isPrime [n - 1, n - 2 ..]
+greatestPrimeNotGreaterThan :: Int -> Int
+greatestPrimeNotGreaterThan n = head $ filter isPrime [n, n - 1 ..]
 
 isPrime :: Int -> Bool
 isPrime n = not $ any (\x -> n `mod` x == 0) [2 .. n `div` 2]

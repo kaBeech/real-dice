@@ -1,6 +1,6 @@
 module RawDataCollection (binaryStringFullLength, binaryStringPrimeLength) where
 
-import Prime (getGreatestPrimeLessThan)
+import Prime (greatestPrimeNotGreaterThan)
 
 -- This data is gathered from rolling dice as well as drawing poker chips out
 -- of a bag, stacking them up, and using a heads/tails schema to get the
@@ -33,5 +33,5 @@ binaryStringFullLength = "110001000001111111110101011101011100000011000011111111
 -- we can run the function 11 times before the elements start repeating
 binaryStringPrimeLength :: String
 binaryStringPrimeLength = do
-  let primeLength = getGreatestPrimeLessThan (length binaryStringFullLength)
+  let primeLength = greatestPrimeNotGreaterThan (length binaryStringFullLength)
   take primeLength binaryStringFullLength
