@@ -1,4 +1,4 @@
-module RawDataCollection (binaryStringFullLength, binaryStringPrimeLength) where
+module RawDataCollection (binaryStringFullLength, binaryStringPrimeLength, boolListFullLength, boolListPrimeLength) where
 
 import Prime (greatestPrimeNotGreaterThan)
 
@@ -35,3 +35,9 @@ binaryStringPrimeLength :: String
 binaryStringPrimeLength = do
   let primeLength = greatestPrimeNotGreaterThan (length binaryStringFullLength)
   take primeLength binaryStringFullLength
+
+boolListFullLength :: [Bool]
+boolListFullLength = map (\c -> c == '0') binaryStringFullLength
+
+boolListPrimeLength :: [Bool]
+boolListPrimeLength = map (\c -> c == '0') binaryStringPrimeLength
