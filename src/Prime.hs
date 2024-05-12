@@ -1,4 +1,4 @@
-module Prime (greatestPrimeNotGreaterThan) where
+module Prime (greatestPrimeNotGreaterThan, isPrime) where
 
 greatestPrimeNotGreaterThan :: Int -> Int
 greatestPrimeNotGreaterThan n = head $ filter isPrime [n, n - 1 ..]
