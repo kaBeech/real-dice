@@ -68,7 +68,7 @@ library
     exposed-modules:  RawDataCollection,
                       Pseudorandom,
                       GetValueFromBoolList,
-                      StandardIntList,
+                      StandardRNGTables,
                       BinaryString,
                       RandomizeList,
                       Prime
