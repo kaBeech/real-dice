@@ -1,10 +1,14 @@
-module RandomizeList (randomizeListWithCustomBoolList) where
+module RandomizeList (randomizeList, randomizeListWithCustomBoolList) where
 
 import Control.Monad.State
 import GetValueFromBoolList (getValueByIndex)
+import StandardRNGTables (standardTableBoolPrimeLength)
 
 data RandomState where
   RandomState :: {index :: Int} -> RandomState
+
+randomizeList :: [Int] -> [Int]
+randomizeList xs = randomizeListWithCustomBoolList xs standardTableBoolPrimeLength
 
 randomizeListWithCustomBoolList :: [Int] -> [Bool] -> [Int]
 randomizeListWithCustomBoolList xs boolList = do
