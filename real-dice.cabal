@@ -68,7 +68,9 @@ library
     exposed-modules:  RawDataCollection,
                       Pseudorandom,
                       GetValueFromBoolList,
+                      StandardIntList,
                       BinaryString,
+                      RandomizeList,
                       Prime
 
     -- Modules included in this library but not exported.
@@ -78,9 +80,9 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.18.2.0
-                      -- mtl,
-                      -- random
+    build-depends:    base ^>=4.18.2.0,
+                      -- random,
+                      mtl
 
     -- Directories containing source files.
     hs-source-dirs:   src

@@ -1,0 +1,11 @@
+module StandardIntList (standardIntListPrimeLength, standardIntListFullLength) where
+
+import Pseudorandom (pseudorandomizedIntListFullLength, pseudorandomizedIntListPrimeLength)
+import RandomizeList (randomizeListWithCustomBoolList)
+import RawDataCollection (rawBoolListFullLength, rawBoolListPrimeLength)
+
+standardIntListPrimeLength :: [Int]
+standardIntListPrimeLength = randomizeListWithCustomBoolList pseudorandomizedIntListPrimeLength rawBoolListPrimeLength
+
+standardIntListFullLength :: [Int]
+standardIntListFullLength = randomizeListWithCustomBoolList pseudorandomizedIntListFullLength rawBoolListFullLength
