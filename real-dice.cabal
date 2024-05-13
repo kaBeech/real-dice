@@ -66,7 +66,7 @@ library
 
     -- Modules exported by the library.
     exposed-modules:  RawDataCollection,
-                      Pseudorandom,
+                      PseudorandomizedInts,
                       GetValueFromBoolList,
                       StandardRNGTables,
                       BinaryString,
@@ -98,7 +98,8 @@ executable real-dice
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
-    other-modules:    Generate
+    other-modules:    Generate,
+                      StdGenRandomize
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -106,6 +107,8 @@ executable real-dice
     -- Other library packages from which modules are imported.
     build-depends:
         base ^>=4.18.2.0,
+        mtl,
+        random,
         real-dice
 
     -- Directories containing source files.
