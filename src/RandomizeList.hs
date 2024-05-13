@@ -16,7 +16,7 @@ randomizeListWithCustomBoolList xs boolList = do
 checkLengths :: [Int] -> [Bool] -> Bool
 checkLengths [] _ = error "The first List is empty"
 checkLengths _ [] = error "The second List is empty"
-checkLengths list1 list2 = (length list1 /= length list2) || error ("Lengths not equal! First List length: " ++ show (length list1) ++ "Second List length: " ++ show (length list2))
+checkLengths list1 list2 = (length list1 == length list2) || error ("Lengths not equal! First List length: " ++ show (length list1) ++ " Second List length: " ++ show (length list2))
 
 randomizeListWithCustomBoolListSinglePass :: [Int] -> [Int] -> [Bool] -> State RandomState [Int]
 randomizeListWithCustomBoolListSinglePass [] list' _ = return list'
