@@ -1,5 +1,6 @@
-module RawDataCollection (rawBinaryStringFullLength, rawBinaryStringPrimeLength, rawBoolListFullLength, rawBoolListPrimeLength) where
+module RawDataCollection (rawBoolListFullLength, rawBoolListPrimeLength) where
 
+import BinaryString (fromBinaryStringToBoolList)
 import Prime (greatestPrimeNotGreaterThan)
 
 -- This data is gathered from rolling dice as well as drawing poker chips out
@@ -37,7 +38,7 @@ rawBinaryStringPrimeLength = do
   take primeLength rawBinaryStringFullLength
 
 rawBoolListFullLength :: [Bool]
-rawBoolListFullLength = map (== '0') rawBinaryStringFullLength
+rawBoolListFullLength = fromBinaryStringToBoolList rawBinaryStringFullLength
 
 rawBoolListPrimeLength :: [Bool]
-rawBoolListPrimeLength = map (== '0') rawBinaryStringPrimeLength
+rawBoolListPrimeLength = fromBinaryStringToBoolList rawBinaryStringPrimeLength

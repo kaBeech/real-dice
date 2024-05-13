@@ -68,6 +68,7 @@ library
     exposed-modules:  RawDataCollection,
                       Pseudorandom,
                       GetValueFromBoolList,
+                      BinaryString,
                       Prime
 
     -- Modules included in this library but not exported.
