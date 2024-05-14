@@ -65,7 +65,8 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  Dice,
+    exposed-modules:  RNG,
+                      Dice,
                       Coin,
                       RawDataCollection,
                       PseudorandomizedInts,
