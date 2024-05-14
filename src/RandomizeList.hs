@@ -1,7 +1,7 @@
 module RandomizeList (randomizeList, randomizeListWithCustomBoolList) where
 
 import Control.Monad.State
-import GetValueFromBoolList (getValueByIndex)
+import GetValueFromRNGTable (getBoolByIndex)
 import StandardRNGTables (standardTableBoolPrimeLength)
 
 data RandomState where
@@ -28,7 +28,7 @@ randomizeListWithCustomBoolListSinglePass list list' boolList = do
   random <- get
   let i = index random
   let i' = i + 1
-  let randomBool = getValueByIndex i boolList
+  let randomBool = getBoolByIndex i boolList
   put RandomState {index = i'}
   if randomBool
     then randomizeListWithCustomBoolListSinglePass (tail list) (head list : list') boolList
