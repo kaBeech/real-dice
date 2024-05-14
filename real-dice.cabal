@@ -65,7 +65,8 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  RawDataCollection,
+    exposed-modules:  Dice,
+                      RawDataCollection,
                       PseudorandomizedInts,
                       GetValueFromRNGTable,
                       StandardRNGTables,
