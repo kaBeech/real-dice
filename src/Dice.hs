@@ -1,4 +1,4 @@
-module Dice (roll1d, makeDice) where
+module Dice (roll1d, makeDice, makeDiceCustom) where
 
 import Control.Monad.State
 import GetValueFromRNGTable (getIntByIndex)
@@ -16,10 +16,10 @@ data DiceState where
 --   [rollResult1, rollResult2]
 
 makeDice :: Int -> DiceState
-makeDice i = makeCustomDice i standardTableIntPrimeLength
+makeDice i = makeDiceCustom i standardTableIntPrimeLength
 
-makeCustomDice :: Int -> [Int] -> DiceState
-makeCustomDice i table = DiceState {index = i, rngTable = table}
+makeDiceCustom :: Int -> [Int] -> DiceState
+makeDiceCustom i table = DiceState {index = i, rngTable = table}
 
 roll1d :: Int -> State DiceState Int
 roll1d n = do
