@@ -65,7 +65,10 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  RNG,
+    exposed-modules:  RealDice
+
+    -- Modules included in this library but not exported.
+    other-modules:    RNG,
                       Dice,
                       Coin,
                       RawDataCollection,
@@ -75,9 +78,6 @@ library
                       BinaryString,
                       RandomizeList,
                       Prime
-
-    -- Modules included in this library but not exported.
-    -- other-modules:
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:

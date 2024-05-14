@@ -1,4 +1,4 @@
-module RNG (randomInt, randomFloat, randomDouble, makeRNG) where
+module RNG (randomInt, randomFloat, randomDouble, makeRNG, makeRNGCustom) where
 
 import Control.Monad.State
 import GetValueFromRNGTable (getIntByIndex)
@@ -9,10 +9,10 @@ data RNGState where
   RNGState :: {index :: Int, rngTable :: [Int]} -> RNGState
 
 makeRNG :: Int -> RNGState
-makeRNG i = makeCustomRNG i standardTableIntPrimeLength
+makeRNG i = makeRNGCustom i standardTableIntPrimeLength
 
-makeCustomRNG :: Int -> [Int] -> RNGState
-makeCustomRNG i table = RNGState {index = i, rngTable = table}
+makeRNGCustom :: Int -> [Int] -> RNGState
+makeRNGCustom i table = RNGState {index = i, rngTable = table}
 
 -- _exampleRandomInt :: [Int]
 -- _exampleRandomInt = do
