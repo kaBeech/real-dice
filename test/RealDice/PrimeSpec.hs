@@ -1,9 +1,9 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 
 {-# HLINT ignore "Use camelCase" #-}
-module PrimeProperties (result_is_less_than_or_equal_to_input, result_is_prime, next_largest_prime_is_larger_than_input) where
+module RealDice.PrimeSpec (result_is_less_than_or_equal_to_input, result_is_prime, next_largest_prime_is_larger_than_input) where
 
-import Prime (greatestPrimeNotGreaterThan, isPrime)
+import RealDice.Util.Prime (greatestPrimeNotGreaterThan, isPrime)
 import Test.QuickCheck
 
 result_is_prime :: Int -> Property

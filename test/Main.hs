@@ -1,7 +1,7 @@
 module Main (main) where
 
 import Control.Monad qualified
-import PrimeProperties (next_largest_prime_is_larger_than_input, result_is_less_than_or_equal_to_input, result_is_prime)
+import RealDice.PrimeSpec (next_largest_prime_is_larger_than_input, result_is_less_than_or_equal_to_input, result_is_prime)
 import System.Exit
 import Test.QuickCheck
 

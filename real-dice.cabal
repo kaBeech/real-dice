@@ -133,7 +133,7 @@ test-suite real-dice-test
     default-language: GHC2021
 
     -- Modules included in this executable, other than Main.
-    other-modules:    PrimeProperties
+    other-modules:    RealDice.PrimeSpec
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
