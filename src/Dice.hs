@@ -1,4 +1,4 @@
-module Dice (roll1d, makeDice) where
+module Dice (roll1d, makeDice, _exampleRoll) where
 
 import Control.Monad.State
 import GetValueFromRNGTable (getIntByIndex)
@@ -11,9 +11,8 @@ data DiceState where
 -- _exampleRoll :: [Int]
 -- _exampleRoll = do
 --   let diceState = makeDice 0
---   let roll1d6 = evalState (roll1d 6) diceState
---   let rollResult1 = roll1d6
---   let rollResult2 = roll1d6
+--   let (rollResult1, diceState') = runState (roll1d 6) diceState
+--   let rollResult2 = evalState (roll1d 6) diceState'
 --   [rollResult1, rollResult2]
 
 makeDice :: Int -> DiceState
