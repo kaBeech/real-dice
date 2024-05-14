@@ -1,4 +1,4 @@
-module RNG (randomInt, makeRNG) where
+module RNG (randomInt, randomFloat, randomDouble, makeRNG) where
 
 import Control.Monad.State
 import GetValueFromRNGTable (getIntByIndex)
@@ -26,8 +26,46 @@ randomInt minResult maxResult = do
   rng <- get
   let rngIndex = index rng
   let rngIndex' = rngIndex + 1
-  let diceValues = randomizeList [minResult .. maxResult]
+  let possibleResults = randomizeList [minResult .. maxResult]
   let table = rngTable rng
-  let rollIndex = getIntByIndex rngIndex table
+  let resultIndex = getIntByIndex rngIndex table
   put RNGState {index = rngIndex', rngTable = table}
-  return (getIntByIndex rollIndex diceValues)
+  return (getIntByIndex resultIndex possibleResults)
+
+randomFloat :: Int -> State RNGState Float
+randomFloat decimalPrecision = randomFloatPerDecimal decimalPrecision 0
+
+randomFloatPerDecimal :: Int -> Float -> State RNGState Float
+randomFloatPerDecimal 0 currentFloat = do
+  return currentFloat
+randomFloatPerDecimal decimalPlace currentFloat = do
+  rng <- get
+  let rngIndex = index rng
+  let rngIndex' = rngIndex + 1
+  let possibleResults = randomizeList [0 .. 9]
+  let table = rngTable rng
+  let resultIndex = getIntByIndex rngIndex table
+  let digit = getIntByIndex resultIndex possibleResults
+  let decimalPlace' = decimalPlace - 1
+  let currentFloat' = currentFloat + (fromIntegral digit / (10 ^ decimalPlace))
+  put RNGState {index = rngIndex', rngTable = table}
+  randomFloatPerDecimal decimalPlace' currentFloat'
+
+randomDouble :: Int -> State RNGState Double
+randomDouble decimalPrecision = randomDoublePerDecimal decimalPrecision 0
+
+randomDoublePerDecimal :: Int -> Double -> State RNGState Double
+randomDoublePerDecimal 0 currentDouble = do
+  return currentDouble
+randomDoublePerDecimal decimalPlace currentDouble = do
+  rng <- get
+  let rngIndex = index rng
+  let rngIndex' = rngIndex + 1
+  let possibleResults = randomizeList [0 .. 9]
+  let table = rngTable rng
+  let resultIndex = getIntByIndex rngIndex table
+  let digit = getIntByIndex resultIndex possibleResults
+  let decimalPlace' = decimalPlace - 1
+  let currentDouble' = currentDouble + (fromIntegral digit / (10 ^ decimalPlace))
+  put RNGState {index = rngIndex', rngTable = table}
+  randomDoublePerDecimal decimalPlace' currentDouble'
