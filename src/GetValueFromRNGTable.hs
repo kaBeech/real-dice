@@ -1,7 +1,7 @@
 module GetValueFromRNGTable (getBoolByIndex, getIntByIndex) where
 
 getIntByIndex :: Int -> [Int] -> Int
-getIntByIndex index list = list !! index `mod` length list
+getIntByIndex index list = list !! (index `mod` length list)
 
 -- After looping over the list once, we flip the values of the elements
 -- so that we can use an odd list length while still having an even
