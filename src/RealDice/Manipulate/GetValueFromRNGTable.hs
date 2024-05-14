@@ -1,4 +1,4 @@
-module GetValueFromRNGTable (getBoolByIndex, getIntByIndex) where
+module RealDice.Manipulate.GetValueFromRNGTable (getBoolByIndex, getIntByIndex) where
 
 getIntByIndex :: Int -> [Int] -> Int
 getIntByIndex index list = list !! (index `mod` length list)

@@ -1,4 +1,4 @@
-module BinaryString (fromBoolToBinaryChar, fromBoolListToBinaryString, fromBinaryCharToBool, fromBinaryStringToBoolList) where
+module RealDice.Convert.BinaryString (fromBoolToBinaryChar, fromBoolListToBinaryString, fromBinaryCharToBool, fromBinaryStringToBoolList) where
 
 fromBoolToBinaryChar :: Bool -> Char
 fromBoolToBinaryChar False = '0'

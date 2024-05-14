@@ -1,6 +1,7 @@
 module Generate (standardRNGTables, pseudorandomizedInts) where
 
-import RealDice qualified (randomizeListWithCustomBoolList, rawBoolListFullLength, rawBoolListPrimeLength)
+import RealDice.Generate (rawBoolListFullLength, rawBoolListPrimeLength)
+import RealDice.Manipulate (randomizeListWithCustomBoolList)
 import StdGenRandomize (randomizeList)
 
 checkLengths :: ([Int] -> [Bool] -> [Int]) -> [Int] -> [Bool] -> [Int]
@@ -10,10 +11,10 @@ checkLengths f list1 list2 = do
     else error ("Lengths not equal! Pseudorandomized Int List length: " ++ show (length list1) ++ " Raw Bool List length: " ++ show (length list2))
 
 pseudorandomizedIntsPrimeLength :: [Int]
-pseudorandomizedIntsPrimeLength = randomizeList [1 .. length RealDice.rawBoolListPrimeLength]
+pseudorandomizedIntsPrimeLength = randomizeList [1 .. length RealDice.Generate.rawBoolListPrimeLength]
 
 pseudorandomizedIntsFullLength :: [Int]
-pseudorandomizedIntsFullLength = randomizeList [1 .. length RealDice.rawBoolListFullLength]
+pseudorandomizedIntsFullLength = randomizeList [1 .. length RealDice.Generate.rawBoolListFullLength]
 
 standardTableBoolPrimeLength :: [Bool]
 standardTableBoolPrimeLength = map odd standardTableIntPrimeLength
@@ -22,10 +23,10 @@ standardTableBoolFullLength :: [Bool]
 standardTableBoolFullLength = map odd standardTableIntFullLength
 
 standardTableIntPrimeLength :: [Int]
-standardTableIntPrimeLength = checkLengths RealDice.randomizeListWithCustomBoolList pseudorandomizedIntsPrimeLength RealDice.rawBoolListPrimeLength
+standardTableIntPrimeLength = checkLengths randomizeListWithCustomBoolList pseudorandomizedIntsPrimeLength rawBoolListPrimeLength
 
 standardTableIntFullLength :: [Int]
-standardTableIntFullLength = checkLengths RealDice.randomizeListWithCustomBoolList pseudorandomizedIntsFullLength RealDice.rawBoolListFullLength
+standardTableIntFullLength = checkLengths randomizeListWithCustomBoolList pseudorandomizedIntsFullLength rawBoolListFullLength
 
 standardRNGTables :: String
 standardRNGTables =

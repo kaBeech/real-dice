@@ -1,9 +1,9 @@
-module Dice (roll1d, makeDice, makeDiceCustom) where
+module RealDice.Die (roll1d, makeDice, makeDiceCustom) where
 
 import Control.Monad.State
-import GetValueFromRNGTable (getIntByIndex)
-import RandomizeList (randomizeList)
-import StandardRNGTables (standardTableIntPrimeLength)
+import RealDice.Generate.StandardRNGTables (standardTableIntPrimeLength)
+import RealDice.Manipulate.GetValueFromRNGTable (getIntByIndex)
+import RealDice.Manipulate.RandomizeList (randomizeList)
 
 data DiceState where
   DiceState :: {index :: Int, rngTable :: [Int]} -> DiceState

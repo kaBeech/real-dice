@@ -1,7 +1,7 @@
-module RawDataCollection (rawBoolListFullLength, rawBoolListPrimeLength) where
+module RealDice.Generate.RawData (rawBoolListFullLength, rawBoolListPrimeLength) where
 
-import BinaryString (fromBinaryStringToBoolList)
-import Prime (greatestPrimeNotGreaterThan)
+import RealDice.Convert.BinaryString (fromBinaryStringToBoolList)
+import RealDice.Util.Prime (greatestPrimeNotGreaterThan)
 
 -- This data is gathered from rolling dice as well as drawing poker chips out
 -- of a bag, stacking them up, and using a heads/tails schema to get the

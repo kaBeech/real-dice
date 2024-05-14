@@ -1,4 +1,4 @@
-module Prime (greatestPrimeNotGreaterThan, isPrime) where
+module RealDice.Util.Prime (greatestPrimeNotGreaterThan, isPrime) where
 
 greatestPrimeNotGreaterThan :: Int -> Int
 greatestPrimeNotGreaterThan n = head $ filter isPrime [n, n - 1 ..]

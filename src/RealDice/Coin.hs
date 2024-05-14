@@ -1,8 +1,8 @@
-module Coin (flipCoin, makeCoin, makeCoinCustom) where
+module RealDice.Coin (flipCoin, makeCoin, makeCoinCustom) where
 
 import Control.Monad.State
-import GetValueFromRNGTable (getBoolByIndex)
-import StandardRNGTables (standardTableBoolPrimeLength)
+import RealDice.Generate.StandardRNGTables (standardTableBoolPrimeLength)
+import RealDice.Manipulate.GetValueFromRNGTable (getBoolByIndex)
 
 data CoinState where
   CoinState :: {index :: Int, rngTable :: [Bool]} -> CoinState

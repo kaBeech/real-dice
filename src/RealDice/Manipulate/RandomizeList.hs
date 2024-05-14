@@ -1,8 +1,8 @@
-module RandomizeList (randomizeList, randomizeListWithCustomBoolList) where
+module RealDice.Manipulate.RandomizeList (randomizeList, randomizeListWithCustomBoolList) where
 
 import Control.Monad.State
-import GetValueFromRNGTable (getBoolByIndex)
-import StandardRNGTables (standardTableBoolPrimeLength)
+import RealDice.Generate.StandardRNGTables (standardTableBoolPrimeLength)
+import RealDice.Manipulate.GetValueFromRNGTable (getBoolByIndex)
 
 data RandomState where
   RandomState :: {index :: Int} -> RandomState

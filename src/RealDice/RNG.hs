@@ -1,9 +1,9 @@
-module RNG (randomInt, randomFloat, randomDouble, makeRNG, makeRNGCustom) where
+module RealDice.RNG (randomInt, randomFloat, randomDouble, makeRNG, makeRNGCustom) where
 
 import Control.Monad.State
-import GetValueFromRNGTable (getIntByIndex)
-import RandomizeList (randomizeList)
-import StandardRNGTables (standardTableIntPrimeLength)
+import RealDice.Generate.StandardRNGTables (standardTableIntPrimeLength)
+import RealDice.Manipulate.GetValueFromRNGTable (getIntByIndex)
+import RealDice.Manipulate.RandomizeList (randomizeList)
 
 data RNGState where
   RNGState :: {index :: Int, rngTable :: [Int]} -> RNGState

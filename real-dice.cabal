@@ -65,26 +65,31 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  RealDice
+    exposed-modules:  RealDice,
+                      RealDice.RNG,
+                      RealDice.Die,
+                      RealDice.Coin,
+                      RealDice.Generate,
+                      RealDice.Generate.RawData,
+                      RealDice.Generate.PseudorandomizedInts,
+                      RealDice.Generate.StandardRNGTables,
+                      RealDice.Convert,
+                      RealDice.Convert.BinaryString,
+                      RealDice.Manipulate,
+                      RealDice.Manipulate.GetValueFromRNGTable,
+                      RealDice.Manipulate.RandomizeList,
+                      RealDice.Util,
+                      RealDice.Util.Prime
+ 
 
     -- Modules included in this library but not exported.
-    other-modules:    RNG,
-                      Dice,
-                      Coin,
-                      RawDataCollection,
-                      PseudorandomizedInts,
-                      GetValueFromRNGTable,
-                      StandardRNGTables,
-                      BinaryString,
-                      RandomizeList,
-                      Prime
+    -- other-modules:
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.18.2.0,
-                      -- random,
                       mtl
 
     -- Directories containing source files.
