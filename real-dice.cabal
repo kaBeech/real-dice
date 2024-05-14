@@ -134,7 +134,14 @@ test-suite real-dice-test
     default-language: GHC2021
 
     -- Modules included in this executable, other than Main.
-    other-modules:    RealDice.PrimeSpec
+    other-modules:    RealDice.CoinSpec,
+                      -- RealDice.Generate.RawDataSpec,
+                      -- RealDice.Generate.PseudorandomizedIntsSpec,
+                      -- RealDice.Generate.StandardRNGTablesSpec,
+                      -- RealDice.Convert.BinaryStringSpec,
+                      -- RealDice.Manipulate.GetValueFromRNGTableSpec,
+                      -- RealDice.Manipulate.RandomizeListSpec,
+                      RealDice.Util.PrimeSpec
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
