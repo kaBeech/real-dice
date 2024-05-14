@@ -4,6 +4,12 @@ import RandomizeList (randomizeListWithCustomBoolList)
 import RawDataCollection (rawBoolListFullLength, rawBoolListPrimeLength)
 import StdGenRandomize (randomizeList)
 
+checkLengths :: ([Int] -> [Bool] -> [Int]) -> [Int] -> [Bool] -> [Int]
+checkLengths f list1 list2 = do
+  if length list1 == length list2
+    then f list1 list2
+    else error ("Lengths not equal! Pseudorandomized Int List length: " ++ show (length list1) ++ " Raw Bool List length: " ++ show (length list2))
+
 pseudorandomizedIntsPrimeLength :: [Int]
 pseudorandomizedIntsPrimeLength = randomizeList [1 .. length RawDataCollection.rawBoolListPrimeLength]
 
@@ -17,10 +23,10 @@ standardTableBoolFullLength :: [Bool]
 standardTableBoolFullLength = map odd standardTableIntFullLength
 
 standardTableIntPrimeLength :: [Int]
-standardTableIntPrimeLength = randomizeListWithCustomBoolList pseudorandomizedIntsPrimeLength rawBoolListPrimeLength
+standardTableIntPrimeLength = checkLengths randomizeListWithCustomBoolList pseudorandomizedIntsPrimeLength rawBoolListPrimeLength
 
 standardTableIntFullLength :: [Int]
-standardTableIntFullLength = randomizeListWithCustomBoolList pseudorandomizedIntsFullLength rawBoolListFullLength
+standardTableIntFullLength = checkLengths randomizeListWithCustomBoolList pseudorandomizedIntsFullLength rawBoolListFullLength
 
 standardRNGTables :: String
 standardRNGTables =

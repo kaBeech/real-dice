@@ -12,15 +12,7 @@ randomizeList xs = randomizeListWithCustomBoolList xs standardTableBoolPrimeLeng
 
 randomizeListWithCustomBoolList :: [Int] -> [Bool] -> [Int]
 randomizeListWithCustomBoolList xs boolList = do
-  let ok = checkLengths xs boolList
-  if ok
-    then evalState (randomizeListWithCustomBoolListSinglePass xs [] boolList) (RandomState 0)
-    else error "The Pseudorandomized Int List is not the same length as the Raw Bool List"
-
-checkLengths :: [Int] -> [Bool] -> Bool
-checkLengths [] _ = error "The first List is empty"
-checkLengths _ [] = error "The second List is empty"
-checkLengths list1 list2 = (length list1 == length list2) || error ("Lengths not equal! First List length: " ++ show (length list1) ++ " Second List length: " ++ show (length list2))
+  evalState (randomizeListWithCustomBoolListSinglePass xs [] boolList) (RandomState 0)
 
 randomizeListWithCustomBoolListSinglePass :: [Int] -> [Int] -> [Bool] -> State RandomState [Int]
 randomizeListWithCustomBoolListSinglePass [] list' _ = return list'
