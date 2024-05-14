@@ -1,6 +1,6 @@
 module RealDice.Generate
-  ( module RealDice.Generate.RawData,
-    module RealDice.Generate.PseudorandomizedInts,
+  ( module RealDice.Generate.PseudorandomizedInts,
+    module RealDice.Generate.RawData,
     module RealDice.Generate.StandardRNGTables,
   )
 where

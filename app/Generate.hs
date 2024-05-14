@@ -30,7 +30,7 @@ standardTableIntFullLength = checkLengths randomizeListWithCustomBoolList pseudo
 
 standardRNGTables :: String
 standardRNGTables =
-  "module StandardRNGTables (standardTableBoolPrimeLength, standardTableBoolFullLength, standardTableIntPrimeLength, standardTableIntFullLength) where\n\
+  "module RealDice.Generate.StandardRNGTables (standardTableBoolPrimeLength, standardTableBoolFullLength, standardTableIntPrimeLength, standardTableIntFullLength) where\n\
   \\n\
   \standardTableIntPrimeLength :: [Int]\n\
   \standardTableIntPrimeLength = "
@@ -53,7 +53,7 @@ standardRNGTables =
 
 pseudorandomizedInts :: String
 pseudorandomizedInts =
-  "module PseudorandomizedInts (pseudorandomizedIntsPrimeLength, pseudorandomizedIntsFullLength) where\n\
+  "module RealDice.Generate.PseudorandomizedInts (pseudorandomizedIntsPrimeLength, pseudorandomizedIntsFullLength) where\n\
   \\n\
   \pseudorandomizedIntsPrimeLength :: [Int]\n\
   \pseudorandomizedIntsPrimeLength = "
