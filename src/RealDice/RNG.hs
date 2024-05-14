@@ -21,16 +21,15 @@ makeRNGCustom i table = RNG {index = i, rngTable = table}
 --   let randomIntResult2 = evalState (randomInt (-99) 99) rngState'
 --   [randomIntResult1, randomIntResult2]
 
-randomInt :: Int -> Int -> State RNG Int
-randomInt minResult maxResult = do
-  rng <- get
+randomInt :: (Int, Int) -> RNG -> (Int, RNG)
+randomInt (minResult, maxResult) rng = do
   let rngIndex = index rng
   let rngIndex' = rngIndex + 1
   let possibleResults = randomizeList [minResult .. maxResult]
   let table = rngTable rng
   let resultIndex = getIntByIndex rngIndex table
-  put RNG {index = rngIndex', rngTable = table}
-  return (getIntByIndex resultIndex possibleResults)
+  let rng' = RNG {index = rngIndex', rngTable = table}
+  (getIntByIndex resultIndex possibleResults, rng')
 
 randomFloat :: Int -> State RNG Float
 randomFloat decimalPrecision = randomFloatPerDecimal decimalPrecision 0
