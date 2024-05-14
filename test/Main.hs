@@ -7,12 +7,14 @@ import Test.QuickCheck
 
 main :: IO ()
 main = do
-  putStrLn "Running test suite..."
-  putStrLn "greatestPrimeNotGreaterThan returns a prime result:"
+  putStrLn "Running test suite!"
+  putStrLn "Testing RealDice.Util.Prime..."
+  putStrLn "...greatestPrimeNotGreaterThan..."
+  putStrLn "...returns a prime result:"
   check result_is_prime
-  putStrLn "greatestPrimeNotGreaterThan returns a result less than or equal to the input:"
+  putStrLn "...returns a result less than or equal to the input:"
   check result_is_less_than_or_equal_to_input
-  putStrLn "greatestPrimeNotGreaterThan returns the largest possible result:"
+  putStrLn "...returns the largest possible result:"
   check next_largest_prime_is_larger_than_input
   putStrLn "All tests pass!"
 

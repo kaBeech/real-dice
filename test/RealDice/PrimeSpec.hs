@@ -3,7 +3,8 @@
 {-# HLINT ignore "Use camelCase" #-}
 module RealDice.PrimeSpec (result_is_less_than_or_equal_to_input, result_is_prime, next_largest_prime_is_larger_than_input) where
 
-import RealDice.Util.Prime (greatestPrimeNotGreaterThan, isPrime)
+import Data.Numbers.Primes (isPrime)
+import RealDice.Util.Prime (greatestPrimeNotGreaterThan)
 import Test.QuickCheck
 
 result_is_prime :: Int -> Property

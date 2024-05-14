@@ -90,6 +90,7 @@ library
 
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.18.2.0,
+                      primes,
                       mtl
 
     -- Directories containing source files.
@@ -151,4 +152,5 @@ test-suite real-dice-test
     build-depends:
         base ^>=4.18.2.0,
         real-dice,
+        primes,
         QuickCheck

@@ -1,7 +1,6 @@
-module RealDice.Util.Prime (greatestPrimeNotGreaterThan, isPrime) where
+module RealDice.Util.Prime (greatestPrimeNotGreaterThan) where
+
+import Data.Numbers.Primes (isPrime)
 
 greatestPrimeNotGreaterThan :: Int -> Int
 greatestPrimeNotGreaterThan n = head $ filter isPrime [n, n - 1 ..]
-
-isPrime :: Int -> Bool
-isPrime n = not $ any (\x -> n `mod` x == 0) [2 .. n `div` 2]
