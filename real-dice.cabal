@@ -66,6 +66,7 @@ library
 
     -- Modules exported by the library.
     exposed-modules:  Dice,
+                      Coin,
                       RawDataCollection,
                       PseudorandomizedInts,
                       GetValueFromRNGTable,
