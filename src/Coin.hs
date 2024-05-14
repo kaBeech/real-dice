@@ -7,6 +7,12 @@ import StandardRNGTables (standardTableBoolPrimeLength)
 data CoinState where
   CoinState :: {index :: Int, rngTable :: [Bool]} -> CoinState
 
+makeCoin :: Int -> CoinState
+makeCoin i = makeCoinCustom i standardTableBoolPrimeLength
+
+makeCoinCustom :: Int -> [Bool] -> CoinState
+makeCoinCustom i table = CoinState {index = i, rngTable = table}
+
 -- _exampleFlip :: [Bool]
 -- _exampleFlip = do
 --   let coinState = makeCoin 0
@@ -16,12 +22,6 @@ data CoinState where
 --   let (flipResult4, coinState'''') = runState flipCoin coinState'''
 --   let flipResult5 = evalState flipCoin coinState''''
 --   [flipResult1, flipResult2, flipResult3, flipResult4, flipResult5]
-
-makeCoin :: Int -> CoinState
-makeCoin i = makeCoinCustom i standardTableBoolPrimeLength
-
-makeCoinCustom :: Int -> [Bool] -> CoinState
-makeCoinCustom i table = CoinState {index = i, rngTable = table}
 
 flipCoin :: State CoinState Bool
 flipCoin = do
