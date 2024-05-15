@@ -20,6 +20,8 @@ Running the executable will produce the standard randomized data as defined in t
 
 Check the source or Hoogle for documentation! (Coming Soon!)
 
+The RNG system itself is a basic randomized table lookup. If it's good enough for [the most perfect software ever written](https://www.youtube.com/watch?v=pq3x1Jy8pYM&t=32s), it's good enough for me!
+
 ### What changes are planned?
 
 Check the [issues](https://github.com/kaBeech/real-dice/issues`) and `TODO.md`!
