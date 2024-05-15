@@ -18,7 +18,7 @@ Running the executable will produce the standard randomized data as defined in t
 
 ### How does Real\*Dice\* work?
 
-Check the source or Hoogle for documentation! (To be added)
+Check the source or Hoogle for documentation! (Coming Soon!)
 
 ### What changes are planned?
 
@@ -42,4 +42,4 @@ Because it's cool.
 
 The interaction between the digital world and the physical world fascinates me. Musicians love to talk about warmth and saturation in audio signals - see [Variety Of Sound](https://varietyofsound.wordpress.com/blog/) for some mind-blowing information and audio plugins. This warmth traditionally comes from signal imperfections springing from physical components. This package doesn't scratch the surface of this kind of signal theory, but it's an attempt to use the physical world to influence the digital one
 
-Plus, we all know that observer interaction affects quantum systems, so it seems fun to have some random data touched by a human available 😸
+Plus, we all know that observer interaction affects quantum systems, so it seems fun to have some random data touched by a human 😸
