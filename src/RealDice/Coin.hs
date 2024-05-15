@@ -10,6 +10,7 @@ mkCoinGen :: Int -> CoinGen
 mkCoinGen i = mkCoinGenCustom i rdBoolsPrime
 
 mkCoinGenCustom :: Int -> [Bool] -> CoinGen
+mkCoinGenCustom i [] = CoinGen {index = i, boolTable = rdBoolsPrime}
 mkCoinGenCustom i table = CoinGen {index = i, boolTable = table}
 
 flipCoin :: CoinGen -> (Bool, CoinGen)

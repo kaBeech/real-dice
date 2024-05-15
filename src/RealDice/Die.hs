@@ -11,10 +11,15 @@ mkDieGen :: Int -> DieGen
 mkDieGen i = mkDieGenCustom i rdIntsPrime
 
 mkDieGenCustom :: Int -> [Int] -> DieGen
+mkDieGenCustom i [] = DieGen {index = i, intTable = rdIntsPrime}
 mkDieGenCustom i table = DieGen {index = i, intTable = table}
 
 roll1d :: Int -> DieGen -> (Int, DieGen)
-roll1d n die =
-  ( getIntByIndex (getIntByIndex (index die) (intTable die)) (randomizeList [1 .. n]),
-    DieGen {index = index die + 1, intTable = intTable die}
-  )
+roll1d n die
+  | n < 1 = (0, die)
+  | otherwise =
+      ( getIntByIndex
+          (getIntByIndex (index die) (intTable die))
+          (randomizeList [1 .. n]),
+        DieGen {index = index die + 1, intTable = intTable die}
+      )
