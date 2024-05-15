@@ -1,33 +1,24 @@
-module RealDice.Die (roll1d, makeDice, makeDiceCustom) where
+module RealDice.Die (DieGen, roll1d, mkDieGen, mkDieGenCustom) where
 
-import Control.Monad.State
 import RealDice.Generate.StandardRNGTables (standardTableIntPrimeLength)
 import RealDice.Manipulate.GetValueFromRNGTable (getIntByIndex)
 import RealDice.Manipulate.RandomizeList (randomizeList)
 
-data DiceState where
-  DiceState :: {index :: Int, rngTable :: [Int]} -> DiceState
+data DieGen where
+  DieGen :: {index :: Int, rngTable :: [Int]} -> DieGen
 
-makeDice :: Int -> DiceState
-makeDice i = makeDiceCustom i standardTableIntPrimeLength
+mkDieGen :: Int -> DieGen
+mkDieGen i = mkDieGenCustom i standardTableIntPrimeLength
 
-makeDiceCustom :: Int -> [Int] -> DiceState
-makeDiceCustom i table = DiceState {index = i, rngTable = table}
+mkDieGenCustom :: Int -> [Int] -> DieGen
+mkDieGenCustom i table = DieGen {index = i, rngTable = table}
 
--- _exampleRoll :: [Int]
--- _exampleRoll = do
---   let diceState = makeDice 0
---   let (rollResult1, diceState') = runState (roll1d 20) diceState
---   let rollResult2 = evalState (roll1d 20) diceState'
---   [rollResult1, rollResult2]
-
-roll1d :: Int -> State DiceState Int
-roll1d n = do
-  dice <- get
-  let rngIndex = index dice
+roll1d :: Int -> DieGen -> (Int, DieGen)
+roll1d n die = do
+  let rngIndex = index die
   let rngIndex' = rngIndex + 1
   let diceValues = randomizeList [1 .. n]
-  let table = rngTable dice
+  let table = rngTable die
   let rollIndex = getIntByIndex rngIndex table
-  put DiceState {index = rngIndex', rngTable = table}
-  return (getIntByIndex rollIndex diceValues)
+  let die' = DieGen {index = rngIndex', rngTable = table}
+  (getIntByIndex rollIndex diceValues, die')
