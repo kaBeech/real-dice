@@ -14,13 +14,6 @@ mkRDGen i = mkRDGenCustom i standardTableIntPrimeLength
 mkRDGenCustom :: Int -> [Int] -> RDGen
 mkRDGenCustom i table = RDGen {index = i, rngTable = table}
 
--- _exampleRandomInt :: [Int]
--- _exampleRandomInt = do
---   let rngState = mkRDGen 0
---   let (randomIntResult1, rngState') = runState (randomIntR 2000 3000) rngState
---   let randomIntResult2 = evalState (randomIntR (-99) 99) rngState'
---   [randomIntResult1, randomIntResult2]
-
 randomIntR :: (Int, Int) -> RDGen -> (Int, RDGen)
 randomIntR (minResult, maxResult) rng = do
   let rngIndex = index rng
