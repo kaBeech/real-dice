@@ -10,6 +10,8 @@ Sometimes the digital world can feel cold and sterile compared to the messy and 
 
 This package can be used to bring some analog warmth and a human touch to our digital world
 
+## Use
+
 The API of the Coin, Die, and RNG modules more or less match the API of System.Random's `random` and `randomR` functions, but with each function handling a specific type and domain. For example, `flipCoin` returns Boolean values and `roll1d n` returns Integers in the range [1, n]
 
 Running the executable will produce the standard randomized data as defined in the Generate modules (see `app/Generate/` and `src/RealDice/Generate/`). If valid seed data exists in the `data-seed/` directory, this will be randomized with the Real\*Dice\* data to generate custom balanced data in the `data-generated/` directory (Coming Soon!)
