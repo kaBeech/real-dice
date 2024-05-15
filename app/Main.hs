@@ -1,24 +1,25 @@
 module Main where
 
-import Generate qualified (pseudorandomizedInts, standardRNGTables)
+import Generate qualified (balancedTables, pseudoRandomizedInts)
+import RealDice.Convert.CSV qualified
+import RealDice.Generate.BalancedTables qualified (rdBinFull, rdBinPrime, rdIntsFull, rdIntsPrime)
 import RealDice.Generate.RawData qualified (rawBinFull, rawBinPrime)
-import RealDice.Generate.StandardRNGTables qualified (rdBinFull, rdBinPrime, standardTableIntFullLength, standardTableIntPrimeLength)
 
 main :: IO ()
 main = do
   putStrLn "Generating src files..."
-  putStrLn "Generating pseudorandomized integers:"
-  writeFile "src/RealDice/Generate/PseudorandomizedInts.hs" Generate.pseudorandomizedInts
+  putStrLn "Generating pseudoRandomized integers:"
+  writeFile "src/RealDice/Generate/PseudoRandomizedInts.hs" Generate.pseudoRandomizedInts
   putStrLn "Generating standard RNG tables:"
-  writeFile "src/RealDice/Generate/StandardRNGTables.hs" Generate.standardRNGTables
+  writeFile "src/RealDice/Generate/BalancedTables.hs" Generate.balancedTables
   putStrLn "Generating data files..."
   putStrLn "Generating raw binary data:"
-  writeFile "generated-data/real_dice_raw_binary_prime.dat" (show RealDice.Generate.RawData.rawBinPrime)
-  writeFile "generated-data/real_dice_raw_binary_full.dat" (show RealDice.Generate.RawData.rawBinFull)
+  writeFile "generated-data/real_dice_raw_prime.bin" RealDice.Generate.RawData.rawBinPrime
+  writeFile "generated-data/real_dice_raw_full.bin" RealDice.Generate.RawData.rawBinFull
   putStrLn "Generating balanced binary data:"
-  writeFile "generated-data/real_dice_balanced_binary_prime.dat" (show RealDice.Generate.StandardRNGTables.rdBinPrime)
-  writeFile "generated-data/real_dice_balanced_binary_full.dat" (show RealDice.Generate.StandardRNGTables.rdBinFull)
+  writeFile "generated-data/real_dice_balanced_prime.bin" RealDice.Generate.BalancedTables.rdBinPrime
+  writeFile "generated-data/real_dice_balanced_full.bin" RealDice.Generate.BalancedTables.rdBinFull
   putStrLn "Generating balanced integer data:"
-  writeFile "generated-data/real_dice_balanced_integers_prime.dat" (show RealDice.Generate.StandardRNGTables.standardTableIntPrimeLength)
-  writeFile "generated-data/real_dice_balanced_integers_full.dat" (show RealDice.Generate.StandardRNGTables.standardTableIntFullLength)
-  putStrLn "Files generatd successfully!"
+  writeFile "generated-data/real_dice_balanced_integers_prime.csv" (RealDice.Convert.CSV.intsToCSV RealDice.Generate.BalancedTables.rdIntsPrime)
+  writeFile "generated-data/real_dice_balanced_integers_full.csv" (RealDice.Convert.CSV.intsToCSV RealDice.Generate.BalancedTables.rdIntsFull)
+  putStrLn "Files generated successfully!"
