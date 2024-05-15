@@ -24,12 +24,12 @@ version:            0.1.0.0
 
 -- A short (one-line) description of the package.
 synopsis:
-    Random number generation using real dice and other media that I actually touched!
+    Random number generation based real dice and other physical media that I actually touched!
+
 
 -- A longer description of the package.
 description:
-    In celebration of Haskell's determinative nature, this package provides real data from my interaction with the physical world as well as utilities to leverage this data for random number generation and other RNG-based tasks
-
+    In celebration of Haskell's determinative nature, this package provides random data from my interaction with the physical world as well as utilities to leverage this data for random number generation and other RNG-based tasks
 -- URL for the project homepage or repository.
 homepage:           https://github.com/kaBeech/real-dice
 
