@@ -1,4 +1,10 @@
-module RealDice.Generate.RawData (rawBoolListFullLength, rawBoolListPrimeLength) where
+module RealDice.Generate.RawData
+  ( rawBoolListPrimeLength,
+    rawBoolListFullLength,
+    rawBinaryStringPrimeLength,
+    rawBinaryStringFullLength,
+  )
+where
 
 import RealDice.Convert.BinaryString (fromBinaryStringToBoolList)
 import RealDice.Util.Prime (greatestPrimeNotGreaterThan)
