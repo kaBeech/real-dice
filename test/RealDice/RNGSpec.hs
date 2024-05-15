@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 
 {-# HLINT ignore "Use camelCase" #-}
-module RealDice.RNGSpec (returns_many_unique_numbers) where
+module RealDice.RNGSpec (returns_many_unique_integers) where
 
 import Control.Monad.State
 import RealDice.RNG (RDGen, mkRDGen, randomIntR)
@@ -22,7 +22,7 @@ generateRandomNumbersSinglePass i generatedNumbers = do
   put RandomState {generator = gen'}
   generateRandomNumbersSinglePass (i - 1) (randomInteger : generatedNumbers)
 
-returns_many_unique_numbers :: Int -> Property
-returns_many_unique_numbers n =
+returns_many_unique_integers :: Int -> Property
+returns_many_unique_integers n =
   n > 0 ==>
     head (generateRandomNumbers n) `notElem` tail (generateRandomNumbers n)

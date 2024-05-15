@@ -1,38 +1,38 @@
 module RealDice.Manipulate.RandomizeList
   ( randomizeList,
-    randomizeListWithCustomBoolList,
+    randomizeWithCustomBools,
   )
 where
 
 import Control.Monad.State
-import RealDice.Generate.StandardRNGTables (standardTableBoolPrimeLength)
+import RealDice.Generate.BalancedTables (rdBoolsPrime)
 import RealDice.Manipulate.GetValueFromRNGTable (getBoolByIndex)
 
 data RandomState where
   RandomState :: {index :: Int} -> RandomState
 
 randomizeList :: [Int] -> [Int]
-randomizeList xs = randomizeListWithCustomBoolList xs standardTableBoolPrimeLength
+randomizeList xs = randomizeWithCustomBools xs rdBoolsPrime
 
-randomizeListWithCustomBoolList :: [Int] -> [Bool] -> [Int]
-randomizeListWithCustomBoolList xs boolList =
+randomizeWithCustomBools :: [Int] -> [Bool] -> [Int]
+randomizeWithCustomBools xs boolList =
   evalState
     (randomizeListWithCustomBoolListSinglePass xs [] boolList)
     (RandomState 0)
 
 randomizeListWithCustomBoolListSinglePass :: [Int] -> [Int] -> [Bool] -> State RandomState [Int]
-randomizeListWithCustomBoolListSinglePass [] list' _ = return list'
-randomizeListWithCustomBoolListSinglePass list list' boolList = do
+randomizeListWithCustomBoolListSinglePass [] l' _ = return l'
+randomizeListWithCustomBoolListSinglePass l l' boolList = do
   random <- get
   put RandomState {index = index random + 1}
   if getBoolByIndex (index random) boolList
     then
       randomizeListWithCustomBoolListSinglePass
-        (tail list)
-        (head list : list')
+        (tail l)
+        (head l : l')
         boolList
     else
       randomizeListWithCustomBoolListSinglePass
-        (tail list)
-        (list' ++ [head list])
+        (tail l)
+        (l' ++ [head l])
         boolList

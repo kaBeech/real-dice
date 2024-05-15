@@ -1,34 +1,34 @@
 module RealDice.Convert.BinaryString
-  ( fromBoolToBinaryChar,
-    fromBoolListToBinaryString,
-    fromBinaryCharToBool,
-    fromBinaryStringToBoolList,
-    fromMixedStringToBoolList,
+  ( boolToBin,
+    boolsToBin,
+    binToBool,
+    binToBools,
+    stringToBools,
   )
 where
 
-fromBoolToBinaryChar :: Bool -> Char
-fromBoolToBinaryChar False = '0'
-fromBoolToBinaryChar True = '1'
+boolToBin :: Bool -> Char
+boolToBin False = '0'
+boolToBin True = '1'
 
-fromBoolListToBinaryString :: [Bool] -> String
-fromBoolListToBinaryString = map fromBoolToBinaryChar
+boolsToBin :: [Bool] -> String
+boolsToBin = map boolToBin
 
-fromBinaryCharToBool :: Char -> Bool
-fromBinaryCharToBool '0' = False
-fromBinaryCharToBool '1' = True
-fromBinaryCharToBool x =
+binToBool :: Char -> Bool
+binToBool '0' = False
+binToBool '1' = True
+binToBool x =
   error
     ( "Invalid binary character: '"
         ++ [x]
         ++ "' (valid binary characters are '0' and '1')"
     )
 
-fromBinaryStringToBoolList :: String -> [Bool]
-fromBinaryStringToBoolList = map fromBinaryCharToBool
+binToBools :: String -> [Bool]
+binToBools = map binToBool
 
-fromMixedStringToBoolList :: String -> [Bool]
-fromMixedStringToBoolList = acc []
+stringToBools :: String -> [Bool]
+stringToBools = acc []
   where
     acc :: [Bool] -> String -> [Bool]
     acc boolList [] = boolList

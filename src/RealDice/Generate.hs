@@ -1,10 +1,10 @@
 module RealDice.Generate
-  ( module RealDice.Generate.PseudorandomizedInts,
+  ( module RealDice.Generate.PseudoRandomizedInts,
     module RealDice.Generate.RawData,
-    module RealDice.Generate.StandardRNGTables,
+    module RealDice.Generate.BalancedTables,
   )
 where
 
-import RealDice.Generate.PseudorandomizedInts
+import RealDice.Generate.PseudoRandomizedInts
 import RealDice.Generate.RawData
-import RealDice.Generate.StandardRNGTables
+import RealDice.Generate.BalancedTables

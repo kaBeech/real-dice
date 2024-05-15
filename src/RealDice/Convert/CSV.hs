@@ -5,7 +5,7 @@ module RealDice.Convert.CSV
 where
 
 intsToCSV :: [Int] -> String
-intsToCSV xs = (tail (take (length (show xs) - 1) (show xs)))
+intsToCSV xs = tail (take (length (show xs) - 1) (show xs))
 
 csvToInts :: String -> [Int]
 csvToInts xs = read ("[" ++ xs ++ "]")

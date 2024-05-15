@@ -6,7 +6,7 @@ module RealDice.Generate.RawData
   )
 where
 
-import RealDice.Convert.BinaryString (fromBinaryStringToBoolList)
+import RealDice.Convert.BinaryString (binToBools)
 import RealDice.Util.Prime (greatestPrimeNotGreaterThan)
 
 -- This data is gathered from rolling dice as well as drawing poker chips out
@@ -52,7 +52,7 @@ rawBinPrime = do
   take primeLength rawBinFull
 
 rawBoolFull :: [Bool]
-rawBoolFull = fromBinaryStringToBoolList rawBinFull
+rawBoolFull = binToBools rawBinFull
 
 rawBoolPrime :: [Bool]
-rawBoolPrime = fromBinaryStringToBoolList rawBinPrime
+rawBoolPrime = binToBools rawBinPrime

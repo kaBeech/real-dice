@@ -5,13 +5,13 @@ module RealDice.Manipulate.GetValueFromRNGTable
 where
 
 getIntByIndex :: Int -> [Int] -> Int
-getIntByIndex index list = list !! (index `mod` length list)
+getIntByIndex index l = l !! (index `mod` length l)
 
 -- After looping over the list once, we flip the values of the elements
 -- so that we can use an odd list length while still having an even
 -- distribution of "True" and "False" values
 getBoolByIndex :: Int -> [Bool] -> Bool
-getBoolByIndex index list =
-  if (index `mod` (length list * 2)) < length list
-    then list !! (index `mod` (length list * 2))
-    else not (list !! ((index `mod` (length list * 2)) - length list))
+getBoolByIndex index l =
+  if (index `mod` (length l * 2)) < length l
+    then l !! (index `mod` (length l * 2))
+    else not (l !! ((index `mod` (length l * 2)) - length l))

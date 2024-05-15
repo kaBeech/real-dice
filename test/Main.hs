@@ -3,7 +3,7 @@ module Main (main) where
 import Control.Monad qualified
 import RealDice.CoinSpec (doesnt_give_same_result_10_times)
 import RealDice.DieSpec (returns_many_unique_rolls)
-import RealDice.RNGSpec (returns_many_unique_numbers)
+import RealDice.RNGSpec (returns_many_unique_integers)
 import RealDice.Util.PrimeSpec (next_largest_prime_is_larger_than_input, result_is_less_than_or_equal_to_input, result_is_prime)
 import System.Exit
 import Test.QuickCheck
@@ -25,8 +25,8 @@ main = do
   check doesnt_give_same_result_10_times
   putStrLn "Testing RealDice.RNGSpec..."
   putStrLn "..randomIntR..."
-  putStrLn "...returns many unique numbers:"
-  check returns_many_unique_numbers
+  putStrLn "...returns many unique integers:"
+  check returns_many_unique_integers
   putStrLn "Testing RealDice.DieSpec..."
   putStrLn "..roll1d..."
   putStrLn "...returns many unique rolls:"

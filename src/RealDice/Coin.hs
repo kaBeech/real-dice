@@ -1,16 +1,16 @@
-module RealDice.Coin (CoinGen, flipCoin, mkCoinGen, makeCoinGenCustom) where
+module RealDice.Coin (CoinGen, flipCoin, mkCoinGen, mkCoinGenCustom) where
 
-import RealDice.Generate.StandardRNGTables (standardTableBoolPrimeLength)
+import RealDice.Generate.BalancedTables (rdBoolsPrime)
 import RealDice.Manipulate.GetValueFromRNGTable (getBoolByIndex)
 
 data CoinGen where
   CoinGen :: {index :: Int, boolTable :: [Bool]} -> CoinGen
 
 mkCoinGen :: Int -> CoinGen
-mkCoinGen i = makeCoinGenCustom i standardTableBoolPrimeLength
+mkCoinGen i = mkCoinGenCustom i rdBoolsPrime
 
-makeCoinGenCustom :: Int -> [Bool] -> CoinGen
-makeCoinGenCustom i table = CoinGen {index = i, boolTable = table}
+mkCoinGenCustom :: Int -> [Bool] -> CoinGen
+mkCoinGenCustom i table = CoinGen {index = i, boolTable = table}
 
 flipCoin :: CoinGen -> (Bool, CoinGen)
 flipCoin coin =

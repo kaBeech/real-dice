@@ -1,88 +1,88 @@
-module Generate (standardRNGTables, pseudorandomizedInts) where
+module Generate (balancedTables, pseudoRandomizedInts) where
 
-import RealDice.Convert.BinaryString (fromBoolListToBinaryString)
+import RealDice.Convert.BinaryString (boolsToBin)
 import RealDice.Generate (rawBoolFull, rawBoolPrime)
-import RealDice.Manipulate (randomizeListWithCustomBoolList)
+import RealDice.Manipulate (randomizeWithCustomBools)
 import StdGenRandomize (randomizeList)
 
 checkLengths :: ([Int] -> [Bool] -> [Int]) -> [Int] -> [Bool] -> [Int]
-checkLengths f list1 list2 = do
-  if length list1 == length list2
-    then f list1 list2
+checkLengths f l1 l2 = do
+  if length l1 == length l2
+    then f l1 l2
     else
       error
-        ( "Lengths not equal! Pseudorandomized Int List length: "
-            ++ show (length list1)
+        ( "Lengths not equal! PseudoRandomized Int List length: "
+            ++ show (length l1)
             ++ " Raw Bool List length: "
-            ++ show (length list2)
+            ++ show (length l2)
         )
 
-pseudorandomizedIntsPrimeLength :: [Int]
-pseudorandomizedIntsPrimeLength =
+psRndIntsPrime :: [Int]
+psRndIntsPrime =
   randomizeList
     [1 .. length RealDice.Generate.rawBoolPrime]
 
-pseudorandomizedIntsFullLength :: [Int]
-pseudorandomizedIntsFullLength =
+psRndIntsFull :: [Int]
+psRndIntsFull =
   randomizeList
     [1 .. length RealDice.Generate.rawBoolFull]
 
-standardTableBoolPrimeLength :: [Bool]
-standardTableBoolPrimeLength = map odd standardTableIntPrimeLength
+rdBoolsPrime :: [Bool]
+rdBoolsPrime = map odd rdIntsPrime
 
-standardTableBoolFullLength :: [Bool]
-standardTableBoolFullLength = map odd standardTableIntFullLength
+rdBoolsFull :: [Bool]
+rdBoolsFull = map odd rdIntsFull
 
-standardTableIntPrimeLength :: [Int]
-standardTableIntPrimeLength =
+rdIntsPrime :: [Int]
+rdIntsPrime =
   checkLengths
-    randomizeListWithCustomBoolList
-    pseudorandomizedIntsPrimeLength
+    randomizeWithCustomBools
+    psRndIntsPrime
     rawBoolPrime
 
-standardTableIntFullLength :: [Int]
-standardTableIntFullLength =
+rdIntsFull :: [Int]
+rdIntsFull =
   checkLengths
-    randomizeListWithCustomBoolList
-    pseudorandomizedIntsFullLength
+    randomizeWithCustomBools
+    psRndIntsFull
     rawBoolFull
 
 rdBinPrime :: String
-rdBinPrime = fromBoolListToBinaryString standardTableBoolPrimeLength
+rdBinPrime = boolsToBin rdBoolsPrime
 
 rdBinFull :: String
-rdBinFull = fromBoolListToBinaryString standardTableBoolFullLength
+rdBinFull = boolsToBin rdBoolsFull
 
-standardRNGTables :: String
-standardRNGTables =
-  "module RealDice.Generate.StandardRNGTables\n\
-  \  ( standardTableBoolPrimeLength,\n\
-  \    standardTableBoolFullLength,\n\
-  \    standardTableIntPrimeLength,\n\
-  \    standardTableIntFullLength,\n\
+balancedTables :: String
+balancedTables =
+  "module RealDice.Generate.BalancedTables\n\
+  \  ( rdBoolsPrime,\n\
+  \    rdBoolsFull,\n\
+  \    rdIntsPrime,\n\
+  \    rdIntsFull,\n\
   \    rdBinPrime,\n\
   \    rdBinFull,\n\
   \  )\n\
   \where\n\
   \\n\
-  \standardTableIntPrimeLength :: [Int]\n\
-  \standardTableIntPrimeLength = "
-    ++ show standardTableIntPrimeLength
+  \rdIntsPrime :: [Int]\n\
+  \rdIntsPrime = "
+    ++ show rdIntsPrime
     ++ "\n\
        \\n\
-       \standardTableIntFullLength :: [Int]\n\
-       \standardTableIntFullLength = "
-    ++ show standardTableIntFullLength
+       \rdIntsFull :: [Int]\n\
+       \rdIntsFull = "
+    ++ show rdIntsFull
     ++ "\n\
        \\n\
-       \standardTableBoolPrimeLength :: [Bool]\n\
-       \standardTableBoolPrimeLength = "
-    ++ show standardTableBoolPrimeLength
+       \rdBoolsPrime :: [Bool]\n\
+       \rdBoolsPrime = "
+    ++ show rdBoolsPrime
     ++ "\n\
        \\n\
-       \standardTableBoolFullLength :: [Bool]\n\
-       \standardTableBoolFullLength = "
-    ++ show standardTableBoolFullLength
+       \rdBoolsFull :: [Bool]\n\
+       \rdBoolsFull = "
+    ++ show rdBoolsFull
     ++ "\n\
        \\n\
        \rdBinPrime :: String\n\
@@ -94,19 +94,19 @@ standardRNGTables =
        \rdBinFull = "
     ++ show rdBinFull
 
-pseudorandomizedInts :: String
-pseudorandomizedInts =
-  "module RealDice.Generate.PseudorandomizedInts\n\
-  \  ( pseudorandomizedIntsPrimeLength,\n\
-  \    pseudorandomizedIntsFullLength\n\
+pseudoRandomizedInts :: String
+pseudoRandomizedInts =
+  "module RealDice.Generate.PseudoRandomizedInts\n\
+  \  ( psRndIntsPrime,\n\
+  \    psRndIntsFull\n\
   \  )\n\
   \where\n\
   \\n\
-  \pseudorandomizedIntsPrimeLength :: [Int]\n\
-  \pseudorandomizedIntsPrimeLength = "
-    ++ show pseudorandomizedIntsPrimeLength
+  \psRndIntsPrime :: [Int]\n\
+  \psRndIntsPrime = "
+    ++ show psRndIntsPrime
     ++ "\n\
        \\n\
-       \pseudorandomizedIntsFullLength :: [Int]\n\
-       \pseudorandomizedIntsFullLength = "
-    ++ show pseudorandomizedIntsFullLength
+       \psRndIntsFull :: [Int]\n\
+       \psRndIntsFull = "
+    ++ show psRndIntsFull

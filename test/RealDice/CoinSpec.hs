@@ -12,7 +12,10 @@ data CoinState where
   CoinState :: {generator :: CoinGen} -> CoinState
 
 generateFlips :: Int -> [Bool]
-generateFlips n = evalState (generateFlipsSinglePass 10 []) (CoinState (mkCoinGen n))
+generateFlips n =
+  evalState
+    (generateFlipsSinglePass 10 [])
+    (CoinState (mkCoinGen n))
 
 generateFlipsSinglePass :: Int -> [Bool] -> State CoinState [Bool]
 generateFlipsSinglePass 0 flips = return flips

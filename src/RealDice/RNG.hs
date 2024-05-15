@@ -1,6 +1,14 @@
-module RealDice.RNG (RDGen, randomIntR, randomFloat, randomDouble, mkRDGen, mkRDGenCustom) where
+module RealDice.RNG
+  ( RDGen,
+    randomIntR,
+    randomFloat,
+    randomDouble,
+    mkRDGen,
+    mkRDGenCustom,
+  )
+where
 
-import RealDice.Generate.StandardRNGTables (standardTableIntPrimeLength)
+import RealDice.Generate.BalancedTables (rdIntsPrime)
 import RealDice.Manipulate.GetValueFromRNGTable (getIntByIndex)
 import RealDice.Manipulate.RandomizeList (randomizeList)
 
@@ -8,20 +16,18 @@ data RDGen where
   RDGen :: {index :: Int, rngTable :: [Int]} -> RDGen
 
 mkRDGen :: Int -> RDGen
-mkRDGen i = mkRDGenCustom i standardTableIntPrimeLength
+mkRDGen i = mkRDGenCustom i rdIntsPrime
 
 mkRDGenCustom :: Int -> [Int] -> RDGen
 mkRDGenCustom i table = RDGen {index = i, rngTable = table}
 
 randomIntR :: (Int, Int) -> RDGen -> (Int, RDGen)
-randomIntR (minResult, maxResult) rng = do
-  let rngIndex = index rng
-  let rngIndex' = rngIndex + 1
-  let possibleResults = randomizeList [minResult .. maxResult]
-  let table = rngTable rng
-  let resultIndex = getIntByIndex rngIndex table
-  let rng' = RDGen {index = rngIndex', rngTable = table}
-  (getIntByIndex resultIndex possibleResults, rng')
+randomIntR (minResult, maxResult) rng =
+  ( getIntByIndex
+      (getIntByIndex (index rng) (rngTable rng))
+      (randomizeList [minResult .. maxResult]),
+    RDGen {index = index rng + 1, rngTable = rngTable rng}
+  )
 
 -- Returns a Float between 0 and 1
 randomFloat :: Int -> RDGen -> (Float, RDGen)
