@@ -7,14 +7,13 @@ data RandomState where
   RandomState :: {generator :: StdGen} -> RandomState
 
 randomizeList :: [Int] -> [Int]
-randomizeList elements = evalState (randomizeListSinglePass elements []) (RandomState (mkStdGen 143))
+randomizeList xs = evalState (randomizeListSinglePass xs []) (RandomState (mkStdGen 143))
 
 randomizeListSinglePass :: [Int] -> [Int] -> State RandomState [Int]
-randomizeListSinglePass [] list' = return list'
-randomizeListSinglePass list list' = do
+randomizeListSinglePass [] l' = return l'
+randomizeListSinglePass l l' = do
   random <- get
-  let gen = generator random
-  let (randomIndex, gen') = randomR (0, length list - 1) gen
-  let element = list !! randomIndex
+  let (randomIndex, gen') = randomR (0, length l - 1) (generator random)
+  let x = l !! randomIndex
   put RandomState {generator = gen'}
-  randomizeListSinglePass (filter (/= element) list) (element : list')
+  randomizeListSinglePass (filter (/= x) l) (x : l')
