@@ -11,21 +11,18 @@ data RandomState where
   RandomState :: {generator :: RDGen} -> RandomState
 
 generateRandomNumbers :: Int -> [Int]
-generateRandomNumbers n = evalState (generateRandomNumbersSinglePass 10 []) (RandomState (mkRDGen n))
+generateRandomNumbers n =
+  evalState (generateRandomNumbersSinglePass 10 []) (RandomState (mkRDGen n))
 
 generateRandomNumbersSinglePass :: Int -> [Int] -> State RandomState [Int]
 generateRandomNumbersSinglePass 0 generatedNumbers = return generatedNumbers
 generateRandomNumbersSinglePass i generatedNumbers = do
   randomSt <- get
-  let gen = generator randomSt
-  let (randomInteger, gen') = randomIntR (0, 1000) gen
+  let (randomInteger, gen') = randomIntR (0, 1000) (generator randomSt)
   put RandomState {generator = gen'}
   generateRandomNumbersSinglePass (i - 1) (randomInteger : generatedNumbers)
 
 returns_many_unique_numbers :: Int -> Property
 returns_many_unique_numbers n =
-  n
-    > 0
-    ==> do
-      let generatedNumbers = generateRandomNumbers n
-      head generatedNumbers `notElem` tail generatedNumbers
+  n > 0 ==>
+    head (generateRandomNumbers n) `notElem` tail (generateRandomNumbers n)
