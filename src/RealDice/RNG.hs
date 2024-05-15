@@ -1,6 +1,5 @@
 module RealDice.RNG (RDGen, randomIntR, randomFloat, randomDouble, mkRDGen, mkRDGenCustom) where
 
-import Control.Monad.State
 import RealDice.Generate.StandardRNGTables (standardTableIntPrimeLength)
 import RealDice.Manipulate.GetValueFromRNGTable (getIntByIndex)
 import RealDice.Manipulate.RandomizeList (randomizeList)
@@ -24,40 +23,30 @@ randomIntR (minResult, maxResult) rng = do
   let rng' = RDGen {index = rngIndex', rngTable = table}
   (getIntByIndex resultIndex possibleResults, rng')
 
-randomFloat :: Int -> State RDGen Float
-randomFloat decimalPrecision = randomFloatPerDecimal decimalPrecision 0
+-- Returns a Float between 0 and 1
+randomFloat :: Int -> RDGen -> (Float, RDGen)
+randomFloat decimalPrecision = randomFloatSinglePass (decimalPrecision, 0)
 
-randomFloatPerDecimal :: Int -> Float -> State RDGen Float
-randomFloatPerDecimal 0 currentFloat = do
-  return currentFloat
-randomFloatPerDecimal decimalPlace currentFloat = do
-  rng <- get
-  let rngIndex = index rng
-  let rngIndex' = rngIndex + 1
-  let possibleResults = randomizeList [0 .. 9]
-  let table = rngTable rng
-  let resultIndex = getIntByIndex rngIndex table
-  let digit = getIntByIndex resultIndex possibleResults
-  let decimalPlace' = decimalPlace - 1
-  let currentFloat' = currentFloat + (fromIntegral digit / (10 ^ decimalPlace))
-  put RDGen {index = rngIndex', rngTable = table}
-  randomFloatPerDecimal decimalPlace' currentFloat'
+randomFloatSinglePass :: (Int, Float) -> RDGen -> (Float, RDGen)
+randomFloatSinglePass (0, currentFloat) rng = (currentFloat, rng)
+randomFloatSinglePass (decimalPlace, currentFloat) rng = do
+  let randomDigit = getIntByIndex (getIntByIndex (index rng) (rngTable rng)) (randomizeList [0 .. 9])
+  randomFloatSinglePass
+    ( decimalPlace - 1,
+      currentFloat + (fromIntegral randomDigit / (10 ^ decimalPlace))
+    )
+    (RDGen {index = index rng + 1, rngTable = rngTable rng})
 
-randomDouble :: Int -> State RDGen Double
-randomDouble decimalPrecision = randomDoublePerDecimal decimalPrecision 0
+-- Returns a Double between 0 and 1
+randomDouble :: Int -> RDGen -> (Double, RDGen)
+randomDouble decimalPrecision = randomDoubleSinglePass (decimalPrecision, 0)
 
-randomDoublePerDecimal :: Int -> Double -> State RDGen Double
-randomDoublePerDecimal 0 currentDouble = do
-  return currentDouble
-randomDoublePerDecimal decimalPlace currentDouble = do
-  rng <- get
-  let rngIndex = index rng
-  let rngIndex' = rngIndex + 1
-  let possibleResults = randomizeList [0 .. 9]
-  let table = rngTable rng
-  let resultIndex = getIntByIndex rngIndex table
-  let digit = getIntByIndex resultIndex possibleResults
-  let decimalPlace' = decimalPlace - 1
-  let currentDouble' = currentDouble + (fromIntegral digit / (10 ^ decimalPlace))
-  put RDGen {index = rngIndex', rngTable = table}
-  randomDoublePerDecimal decimalPlace' currentDouble'
+randomDoubleSinglePass :: (Int, Double) -> RDGen -> (Double, RDGen)
+randomDoubleSinglePass (0, currentDouble) rng = (currentDouble, rng)
+randomDoubleSinglePass (decimalPlace, currentDouble) rng = do
+  let randomDigit = getIntByIndex (getIntByIndex (index rng) (rngTable rng)) (randomizeList [0 .. 9])
+  randomDoubleSinglePass
+    ( decimalPlace - 1,
+      currentDouble + (fromIntegral randomDigit / (10 ^ decimalPlace))
+    )
+    (RDGen {index = index rng + 1, rngTable = rngTable rng})
