@@ -1,4 +1,8 @@
-module RealDice.Manipulate.GetValueFromRNGTable (getBoolByIndex, getIntByIndex) where
+module RealDice.Manipulate.GetValueFromRNGTable
+  ( getBoolByIndex,
+    getIntByIndex,
+  )
+where
 
 getIntByIndex :: Int -> [Int] -> Int
 getIntByIndex index list = list !! (index `mod` length list)
@@ -7,9 +11,7 @@ getIntByIndex index list = list !! (index `mod` length list)
 -- so that we can use an odd list length while still having an even
 -- distribution of "True" and "False" values
 getBoolByIndex :: Int -> [Bool] -> Bool
-getBoolByIndex index list = do
-  let doubleLength = length list * 2
-  let index' = index `mod` doubleLength
-  if index' < length list
-    then list !! index'
-    else not (list !! (index' - length list))
+getBoolByIndex index list =
+  if (index `mod` (length list * 2)) < length list
+    then list !! (index `mod` (length list * 2))
+    else not (list !! ((index `mod` (length list * 2)) - length list))
