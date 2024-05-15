@@ -1,5 +1,6 @@
 module Generate (standardRNGTables, pseudorandomizedInts) where
 
+import RealDice.Convert.BinaryString (fromBoolListToBinaryString)
 import RealDice.Generate (rawBoolFull, rawBoolPrime)
 import RealDice.Manipulate (randomizeListWithCustomBoolList)
 import StdGenRandomize (randomizeList)
@@ -46,13 +47,21 @@ standardTableIntFullLength =
     pseudorandomizedIntsFullLength
     rawBoolFull
 
+rdBinPrime :: String
+rdBinPrime = fromBoolListToBinaryString standardTableBoolPrimeLength
+
+rdBinFull :: String
+rdBinFull = fromBoolListToBinaryString standardTableBoolFullLength
+
 standardRNGTables :: String
 standardRNGTables =
   "module RealDice.Generate.StandardRNGTables\n\
   \  ( standardTableBoolPrimeLength,\n\
   \    standardTableBoolFullLength,\n\
   \    standardTableIntPrimeLength,\n\
-  \    standardTableIntFullLength\n\
+  \    standardTableIntFullLength,\n\
+  \    rdBinPrime,\n\
+  \    rdBinFull,\n\
   \  )\n\
   \where\n\
   \\n\
@@ -74,6 +83,16 @@ standardRNGTables =
        \standardTableBoolFullLength :: [Bool]\n\
        \standardTableBoolFullLength = "
     ++ show standardTableBoolFullLength
+    ++ "\n\
+       \\n\
+       \rdBinPrime :: String\n\
+       \rdBinPrime = "
+    ++ show rdBinPrime
+    ++ "\n\
+       \\n\
+       \rdBinFull :: String\n\
+       \rdBinFull = "
+    ++ show rdBinFull
 
 pseudorandomizedInts :: String
 pseudorandomizedInts =
