@@ -40,9 +40,11 @@
 
 - Provide functions similar to Lib (i.e. providing and generating random data)?
 
-# Outline
+# ToDo
 
-# Next Steps
+- Write more tests, particularly for the Convert and Manipulate modules.
+
+- Try [DieHarder](https://www.phy.duke.edu/~rgb/General/dieharder.php)
 
 # Current Status
 
