@@ -41,8 +41,7 @@ randomFloat decimalPrecision rng
 randomFloatSinglePass :: (Int, Float) -> RDGen -> (Float, RDGen)
 randomFloatSinglePass (0, currentFloat) rng = (currentFloat, rng)
 randomFloatSinglePass (decimalPlace, currentFloat) rng = do
-  let randomDigit = 
-    (getIntByIndex (getIntByIndex (index rng) (rngTable rng)) (randomizeList [0 .. 9]))
+  let randomDigit = getIntByIndex (getIntByIndex (index rng) (rngTable rng)) (randomizeList [0 .. 9])
   randomFloatSinglePass
     ( decimalPlace - 1,
       currentFloat + (fromIntegral randomDigit / (10 ^ decimalPlace))

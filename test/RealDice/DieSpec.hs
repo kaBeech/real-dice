@@ -1,7 +1,11 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 
 {-# HLINT ignore "Use camelCase" #-}
-module RealDice.DieSpec (returns_many_unique_rolls) where
+module RealDice.DieSpec
+  ( returns_many_unique_rolls,
+    returns_0_for_inputs_under_1,
+  )
+where
 
 import Control.Monad.State
 import RealDice.Die (DieGen, mkDieGen, roll1d)
@@ -26,5 +30,8 @@ returns_many_unique_rolls :: Int -> Property
 returns_many_unique_rolls n =
   n
     > 0
-      ==> head (generateRolls n)
-    `notElem` tail (generateRolls n)
+    ==> head (generateRolls n)
+      `notElem` tail (generateRolls n)
+
+returns_0_for_inputs_under_1 :: Int -> Property
+returns_0_for_inputs_under_1 n = n < 1 ==> head (generateRolls n) == 0
