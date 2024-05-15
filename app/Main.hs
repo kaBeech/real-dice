@@ -21,16 +21,16 @@ main = do
   writeFile "src/RealDice/Generate/BalancedTables.hs" balancedTables
   putStrLn "Generating data files..."
   putStrLn "Generating raw binary data:"
-  writeFile "generated-data/real_dice_raw_prime.bin" rawBinPrime
-  writeFile "generated-data/real_dice_raw_full.bin" rawBinFull
+  writeFile "data-generated/real_dice_raw_prime.bin" rawBinPrime
+  writeFile "data-generated/real_dice_raw_full.bin" rawBinFull
   putStrLn "Generating balanced binary data:"
-  writeFile "generated-data/real_dice_balanced_prime.bin" rdBinPrime
-  writeFile "generated-data/real_dice_balanced_full.bin" rdBinFull
+  writeFile "data-generated/real_dice_balanced_prime.bin" rdBinPrime
+  writeFile "data-generated/real_dice_balanced_full.bin" rdBinFull
   putStrLn "Generating balanced integer data:"
   writeFile
-    "generated-data/real_dice_balanced_integers_prime.csv"
+    "data-generated/real_dice_balanced_integers_prime.csv"
     (intsToCSV rdIntsPrime)
   writeFile
-    "generated-data/real_dice_balanced_integers_full.csv"
+    "data-generated/real_dice_balanced_integers_full.csv"
     (intsToCSV rdIntsFull)
   putStrLn "Files generated successfully!"
