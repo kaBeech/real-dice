@@ -5,6 +5,8 @@ import RealDice.Generate (rawBoolFull, rawBoolPrime)
 import RealDice.Manipulate (randomizeWithCustomBools)
 import StdGenRandomize (randomizeList)
 
+-- | Verify that a list of Ints has the same length as a list of Bools before running a function on them.
+--   This is used to make sure that there is an Int in the pseudo-randomized seed list for each Bool in the RealDice raw data.
 checkLengths :: ([Int] -> [Bool] -> [Int]) -> [Int] -> [Bool] -> [Int]
 checkLengths f l1 l2 = do
   if length l1 == length l2
@@ -17,22 +19,19 @@ checkLengths f l1 l2 = do
             ++ show (length l2)
         )
 
+-- | Prime-length list of integers randomized with StdGen
 psRndIntsPrime :: [Int]
 psRndIntsPrime =
-  randomizeList
+  randomizeList -- I feel it's okay to use StdGen to generate the files, as long as it's not used in the library itself
     [1 .. length RealDice.Generate.rawBoolPrime]
 
+-- | Full-length list of integers randomized with StdGen
 psRndIntsFull :: [Int]
 psRndIntsFull =
-  randomizeList
+  randomizeList -- I feel it's okay to use StdGen to generate the files, as long as it's not used in the library itself
     [1 .. length RealDice.Generate.rawBoolFull]
 
-rdBoolsPrime :: [Bool]
-rdBoolsPrime = map odd rdIntsPrime
-
-rdBoolsFull :: [Bool]
-rdBoolsFull = map odd rdIntsFull
-
+-- | Prime-length list of integers randomized with the RealDice raw data
 rdIntsPrime :: [Int]
 rdIntsPrime =
   checkLengths
@@ -40,6 +39,7 @@ rdIntsPrime =
     psRndIntsPrime
     rawBoolPrime
 
+-- | Full-length list of integers randomized with the RealDice raw data
 rdIntsFull :: [Int]
 rdIntsFull =
   checkLengths
@@ -47,12 +47,23 @@ rdIntsFull =
     psRndIntsFull
     rawBoolFull
 
+-- | Prime-length balanced list of Bools randomized with the RealDice raw data
+rdBoolsPrime :: [Bool]
+rdBoolsPrime = map odd rdIntsPrime
+
+-- | Full-length balanced list of Bools randomized with the RealDice raw data
+rdBoolsFull :: [Bool]
+rdBoolsFull = map odd rdIntsFull
+
+-- | Prime-length balaned binary string randomized with the RealDice raw data
 rdBinPrime :: String
 rdBinPrime = boolsToBin rdBoolsPrime
 
+-- | Full-length balanced binary string randomized with the RealDice raw data
 rdBinFull :: String
 rdBinFull = boolsToBin rdBoolsFull
 
+-- | The balanced tables for the RealDice library
 balancedTables :: String
 balancedTables =
   "module RealDice.Generate.BalancedTables\n\
@@ -94,6 +105,7 @@ balancedTables =
        \rdBinFull = "
     ++ show rdBinFull
 
+-- | Pseudo-randomized integers generated for the RealDice library
 pseudoRandomizedInts :: String
 pseudoRandomizedInts =
   "module RealDice.Generate.PseudoRandomizedInts\n\
