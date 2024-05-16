@@ -18,19 +18,20 @@ mkDieGenCustom i [] = DieGen {index = i, intTable = rdIntsPrime}
 mkDieGenCustom i table = DieGen {index = i, intTable = table}
 
 -- | Generates random integer values via a simple table lookup
---   For Example:
+
+-- | ==== __Examples__
 --   >>> roll1d 20 (mkDieGen 143)
---   Returns the updated DieGen and a random integer between 1 and 20
+--   A random integer between 1 and 20 and the updated DieGen with an index of 144
 roll1d ::
   -- | The number of sides on the die
   Int ->
   -- | The DieGen to use
   DieGen ->
+  --  | The updated index
   ( Int,
-    -- \^ The updated index
+    --  | The updated DieGen
     DieGen
   )
--- \^ The updated DieGen
 roll1d n die
   | n < 1 = (0, die)
   | otherwise =
