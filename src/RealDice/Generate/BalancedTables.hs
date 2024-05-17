@@ -1,3 +1,5 @@
+-- | This module contains balanced tables randomized with the RealDice 
+--   raw data
 module RealDice.Generate.BalancedTables
   ( rdBoolsPrime,
     rdBoolsFull,

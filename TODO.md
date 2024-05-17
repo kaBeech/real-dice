@@ -8,6 +8,6 @@
 
 - Experiment with the speed of mutating the array instead of incrementing the index
 
-# Current Status
+## Current Status
 
 - Adding documentation

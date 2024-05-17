@@ -1,3 +1,5 @@
+-- | This module provides functions to generate random numbers using balanced
+--   integer tables randomized by the RealDice data or custom integer tables
 module RealDice.RNG
   ( RDGen,
     randomIntR,
@@ -13,34 +15,34 @@ import RealDice.Manipulate.GetValueFromRNGTable (getIntByIndex)
 import RealDice.Manipulate.RandomizeList (randomizeList)
 
 -- | Stores a balanced table of random integers and an index pointing to the
--- | next value to return
+--   next value to return
 data RDGen where
   RDGen :: {index :: Int, rngTable :: [Int]} -> RDGen
 
 -- | Creates a new RDGen with the given index and the default Int table
 
 -- | ==== __Examples__
--- >>> mkRDGen 143
--- {143, rdIntsPrime}
+--   >>> mkRDGen 143
+--   {143, rdIntsPrime}
 mkRDGen :: Int -> RDGen
 mkRDGen i = mkRDGenCustom i rdIntsPrime
 
 -- | Creates a new RDGen with the given index and Int table
 
 -- | Defaults to the RealDice balanced table of random integers if an empty
--- | list is given
+--   list is given
 
 -- | ==== __Examples__
--- >>> mkRDGenCustom 143 [1, 0, 4, 3, 2]
--- {143, [1, 0, 4, 3, 2]}
--- >>> mkRDGenCustom 143 []
--- {143, rdIntsPrime}
+--   >>> mkRDGenCustom 143 [1, 0, 4, 3, 2]
+--   {143, [1, 0, 4, 3, 2]}
+--   >>> mkRDGenCustom 143 []
+--   {143, rdIntsPrime}
 mkRDGenCustom :: Int -> [Int] -> RDGen
 mkRDGenCustom i [] = RDGen {index = i, rngTable = rdIntsPrime}
 mkRDGenCustom i table = RDGen {index = i, rngTable = table}
 
 -- | Generates a random integer value between minResult and maxResult via a
--- | simple table lookup
+--   simple table lookup
 
 -- | ==== __Examples__
 --   >>> randomIntR (1, 20) (mkRDGen 143)
@@ -109,12 +111,12 @@ randomDouble decimalPrecision rng
 -- Generates a single digit to be used to compose a random float
 
 -- | ==== __Examples__
--- >>> randomDoubleSinglePass (1, 0.003) (mkRDGen 145)
--- (0.503, {146, rdIntsPrime})
--- >>> randomDoubleSinglePass (0, 0) (mkRDGen 143)
--- (0, {143, rdIntsPrime})
--- >>> randomDoubleSinglePass (-1, 0) (mkRDGen 143)
--- (0, {143, rdIntsPrime})
+--   >>> randomDoubleSinglePass (1, 0.003) (mkRDGen 145)
+--   (0.503, {146, rdIntsPrime})
+--   >>> randomDoubleSinglePass (0, 0) (mkRDGen 143)
+--   (0, {143, rdIntsPrime})
+--   >>> randomDoubleSinglePass (-1, 0) (mkRDGen 143)
+--   (0, {143, rdIntsPrime})
 randomDoubleSinglePass :: (Int, Double) -> RDGen -> (Double, RDGen)
 randomDoubleSinglePass (0, currentDouble) rng = (currentDouble, rng)
 randomDoubleSinglePass (decimalPlace, currentDouble) rng = do
