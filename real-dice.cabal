@@ -56,7 +56,8 @@ extra-doc-files:    README.md,
                     CHANGELOG.md
 
 -- Extra source files to be distributed with the package, such as examples, or a tutorial module.
--- extra-source-files:
+extra-source-files: data-generated/*.bin,
+                    data-generated/*.csv
 
 common warnings
     ghc-options: -Wall
