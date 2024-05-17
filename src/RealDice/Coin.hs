@@ -14,8 +14,8 @@ data CoinGen where
 -- | Creates a new CoinGen with the given index and the default bool table
 
 -- | ==== __Examples__
---  >>> mkCoinGen 143
---  {143, rdBoolsPrime}
+--   >>> mkCoinGen 143
+--   {143, rdBoolsPrime}
 mkCoinGen :: Int -> CoinGen
 mkCoinGen i = mkCoinGenCustom i rdBoolsPrime
 
