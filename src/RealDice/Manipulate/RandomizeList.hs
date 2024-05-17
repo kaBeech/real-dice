@@ -19,15 +19,15 @@ data RandomState where
 
 -- | ==== __Examples__
 --   >>> randomizeList [1, 2, 3, 4, 5]
---   [2, 4, 1, 5, 3]
+--   [5,3,1,2,4]
 randomizeList :: [Int] -> [Int]
 randomizeList xs = randomizeWithCustomBools xs rdBoolsPrime
 
 -- | Randomizes the order of a list of integers using a custom list of booleans
 
 -- | ==== __Examples__
---   >>> randomizeWithCustomBools [1, 2, 3, 4, 5] [True, False, True, False, True]
---   [1, 3, 5, 2, 4]
+--   >>> randomizeWithCustomBools [1, 2, 3, 4, 5] [True, False, False, True, True]
+--   [5,4,1,2,3]
 randomizeWithCustomBools :: [Int] -> [Bool] -> [Int]
 randomizeWithCustomBools xs boolList =
   evalState
