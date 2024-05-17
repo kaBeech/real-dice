@@ -59,6 +59,10 @@ extra-doc-files:    README.md,
 extra-source-files: data-generated/*.bin,
                     data-generated/*.csv
 
+source-repository head
+    type:           git
+    location:       https://github.com/kaBeech/real-dice
+
 common warnings
     ghc-options: -Wall
 
