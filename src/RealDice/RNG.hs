@@ -21,9 +21,9 @@ data RDGen where
 
 -- | Creates a new RDGen with the given index and the default Int table
 
--- | ==== __Examples__
--- >>> mkRDGen 143
--- {143, rdIntsPrime}
+-- | \$ __Examples__
+--   >>> mkRDGen 143
+--   {143, rdIntsPrime}
 mkRDGen :: Int -> RDGen
 mkRDGen i = mkRDGenCustom i rdIntsPrime
 
@@ -33,9 +33,9 @@ mkRDGen i = mkRDGenCustom i rdIntsPrime
 --   list is given
 
 -- | ==== __Examples__
---   >>> mkRDGenCustom 143 [1, 0, 4, 3, 2]
+--   $ mkRDGenCustom 143 [1, 0, 4, 3, 2]
 --   {143, [1, 0, 4, 3, 2]}
---   >>> mkRDGenCustom 143 []
+--   $ mkRDGenCustom 143 []
 --   {143, rdIntsPrime}
 mkRDGenCustom :: Int -> [Int] -> RDGen
 mkRDGenCustom i [] = RDGen {index = i, rngTable = rdIntsPrime}
@@ -44,7 +44,7 @@ mkRDGenCustom i table = RDGen {index = i, rngTable = table}
 -- | Generates a random integer value between minResult and maxResult via a
 --   simple table lookup
 
--- | ==== __Examples__
+-- | \$ __Examples__
 --   >>> randomIntR (1, 20) (mkRDGen 143)
 --   (12, {144, rdIntsPrime})
 --   >>> randomIntR (-1000000, 1000000) (mkRDGen 42)
@@ -63,7 +63,7 @@ randomIntR (minResult, maxResult) rng
 
 -- Generate a random float value between 0 and 1
 
--- | ==== __Examples__
+-- | \$ __Examples__
 --   >>> randomFloat 3 (mkRDGen 143)
 --   (0.503, {144, rdIntsPrime})
 --   >>> randomFloat 0 (mkRDGen 143)
@@ -77,13 +77,13 @@ randomFloat decimalPrecision rng
 
 -- Generates a single digit to be used to compose a random float
 
--- | ==== __Examples__
---  >>> randomFloatSinglePass (1, 0.003) (mkRDGen 145)
---  (0.503, {146, rdIntsPrime})
---  >>> randomFloatSinglePass (0, 0) (mkRDGen 143)
---  (0, {143, rdIntsPrime})
---  >>> randomFloatSinglePass (-1, 0) (mkRDGen 143)
---  (0, {143, rdIntsPrime})
+-- | \$ __Examples__
+--   >>> randomFloatSinglePass (1, 0.003) (mkRDGen 145)
+--   (0.503, {146, rdIntsPrime})
+--   >>> randomFloatSinglePass (0, 0) (mkRDGen 143)
+--   (0, {143, rdIntsPrime})
+--   >>> randomFloatSinglePass (-1, 0) (mkRDGen 143)
+--   (0, {143, rdIntsPrime})
 randomFloatSinglePass :: (Int, Float) -> RDGen -> (Float, RDGen)
 randomFloatSinglePass (0, currentFloat) rng = (currentFloat, rng)
 randomFloatSinglePass (decimalPlace, currentFloat) rng = do
@@ -96,7 +96,7 @@ randomFloatSinglePass (decimalPlace, currentFloat) rng = do
 
 -- Generates a random float value between 0 and 1
 
--- | ==== __Examples__
+-- | \$ __Examples__
 --   >>> randomDouble 3 (mkRDGen 143)
 --   (0.503, {144, rdIntsPrime})
 --   >>> randomDouble 0 (mkRDGen 143)
@@ -110,7 +110,7 @@ randomDouble decimalPrecision rng
 
 -- Generates a single digit to be used to compose a random float
 
--- | ==== __Examples__
+-- | \$ __Examples__
 --   >>> randomDoubleSinglePass (1, 0.003) (mkRDGen 145)
 --   (0.503, {146, rdIntsPrime})
 --   >>> randomDoubleSinglePass (0, 0) (mkRDGen 143)
