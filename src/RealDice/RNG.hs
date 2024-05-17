@@ -22,8 +22,8 @@ data RDGen where
 -- | Creates a new RDGen with the given index and the default Int table
 
 -- | ==== __Examples__
--- >>> mkRDGen 143
--- {143, rdIntsPrime}
+--   >>> mkRDGen 143
+--   {143, rdIntsPrime}
 mkRDGen :: Int -> RDGen
 mkRDGen i = mkRDGenCustom i rdIntsPrime
 

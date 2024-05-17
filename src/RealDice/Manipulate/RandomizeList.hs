@@ -19,15 +19,15 @@ data RandomState where
 
 -- | ==== __Examples__
 --   >>> randomizeList [1, 2, 3, 4, 5]
---   [2, 4, 1, 5, 3]
+--   [5,3,1,2,4]
 randomizeList :: [Int] -> [Int]
 randomizeList xs = randomizeWithCustomBools xs rdBoolsPrime
 
 -- | Randomizes the order of a list of integers using a custom list of booleans
 
 -- | ==== __Examples__
---   >>> randomizeWithCustomBools [1, 2, 3, 4, 5] [True, False, True, False, True]
---   [1, 3, 5, 2, 4]
+--   >>> randomizeWithCustomBools [1, 2, 3, 4, 5] [True, False, False, True, True]
+--   [5,4,1,2,3]
 randomizeWithCustomBools :: [Int] -> [Bool] -> [Int]
 randomizeWithCustomBools xs boolList =
   evalState
@@ -43,11 +43,11 @@ randomizeListWithCustomBoolListSinglePass l l' boolList = do
   if getBoolByIndex (index random) boolList
     then
       randomizeListWithCustomBoolListSinglePass
-        (tail l)
+        (drop 1 l)
         (head l : l')
         boolList
     else
       randomizeListWithCustomBoolListSinglePass
-        (tail l)
+        (drop 1 l)
         (l' ++ [head l])
         boolList
