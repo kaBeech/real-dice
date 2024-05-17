@@ -14,7 +14,7 @@ data DieGen where
 
 -- | Creates a new DieGen with the given index and the default Int table
 
--- | \$ __Examples__
+-- | ==== __Examples__
 --   >>> mkDieGen 143
 --   {143, rdIntsPrime}
 mkDieGen :: Int -> DieGen
@@ -25,7 +25,7 @@ mkDieGen i = mkDieGenCustom i rdIntsPrime
 -- | Defaults to the RealDice balanced table of random integers if an empty
 --   list is given
 
--- | \$ __Examples__
+-- | ==== __Examples__
 --   >>> mkDieGenCustom 143 [1, 0, 4, 3, 2]
 --   {143, [1, 0, 4, 3, 2]}
 --   >>> mkDieGenCustom 143 []
@@ -36,7 +36,7 @@ mkDieGenCustom i table = DieGen {index = i, intTable = table}
 
 -- | Generates a random integer value between 1 and n via a simple table lookup
 
--- | \$ __Examples__
+-- | ==== __Examples__
 --   >>> roll1d 20 (mkDieGen 143)
 --   (12, {144, rdIntsPrime})
 roll1d ::
