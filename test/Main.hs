@@ -6,6 +6,10 @@ import RealDice.RNGSpec (returns_many_unique_integers)
 import RealDice.Util.PrimeSpec (next_largest_prime_is_larger_than_input, result_is_less_than_or_equal_to_input, result_is_prime)
 import TestCheck (check)
 
+-- | Run the test suite
+
+-- | Currently this consists of QuickCheck tests, along with a guard that will
+-- | cause the test suite to fail if any of the individual tests fail
 main :: IO ()
 main = do
   putStrLn "Running test suite!"
@@ -39,4 +43,3 @@ main = do
   check returns_many_unique_rolls
 
   putStrLn "All tests pass!"
-

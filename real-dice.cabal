@@ -24,12 +24,12 @@ version:            0.1.0.0
 
 -- A short (one-line) description of the package.
 synopsis:
-    Random number generation based real dice and other physical media that I actually touched!
+    Random number generation based on physical media touched by humans
 
 
 -- A longer description of the package.
 description:
-    In celebration of Haskell's determinative nature, this package provides random data from my interaction with the physical world as well as utilities to leverage this data for random number generation and other RNG-based tasks
+    This package provides random data gethered via human interaction with the physical world as well as utilities to leverage this data for random number generation and other RNG-based tasks
 -- URL for the project homepage or repository.
 homepage:           https://github.com/kaBeech/real-dice
 
@@ -91,8 +91,8 @@ library
 
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.18.2.0,
-                      primes,
-                      mtl
+                      mtl >= 2.3.1 && < 2.4,
+                      primes >= 0.2.1 && < 0.3
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -116,9 +116,9 @@ executable real-dice
 
     -- Other library packages from which modules are imported.
     build-depends:
-        base ^>=4.18.2.0,
+        base,
         mtl,
-        random,
+        random >= 1.2.1 && < 1.3,
         real-dice
 
     -- Directories containing source files.
@@ -161,10 +161,9 @@ test-suite real-dice-test
 
     -- Test dependencies.
     build-depends:
-        base ^>=4.18.2.0,
+        base,
         real-dice,
         primes,
-        random,
-        extra,
         mtl,
-        QuickCheck
+        extra >= 1.7.15 && < 1.8,
+        QuickCheck >= 2.15 && < 2.16

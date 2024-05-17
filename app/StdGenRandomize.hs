@@ -6,6 +6,17 @@ import System.Random (StdGen, mkStdGen, randomR)
 data RandomState where
   RandomState :: {generator :: StdGen} -> RandomState
 
+-- | Use StdGen to randomize the order of a list of integers
+
+-- | This is used to generate balanced seed data to be randomized with the
+-- | RealDice raw data
+
+-- | I feel comfortable use StdGen to generate the files, as long as it's not
+-- | used in the library itself
+
+-- | ==== __Examples__
+-- | >>> randomizeList [1, 2, 3, 4, 5]
+-- | [3, 1, 5, 2, 4]
 randomizeList :: [Int] -> [Int]
 randomizeList xs =
   evalState
