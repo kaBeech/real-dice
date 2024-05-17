@@ -47,7 +47,8 @@ maintainer:         contact@kaBeech.com
 
 -- A copyright notice.
 -- copyright:
-category:           Math
+category:           Math,
+                    Data
 build-type:         Simple
 
 -- Extra doc files to be distributed with the package, such as a CHANGELOG or a README.
