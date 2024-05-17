@@ -46,7 +46,7 @@ author:             Kyle Beechly
 maintainer:         contact@kaBeech.com
 
 -- A copyright notice.
-copyright:
+copyright:          2024 Kyle Beechly
 category:           Math,
                     Data
 build-type:         Simple
