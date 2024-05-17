@@ -1,4 +1,4 @@
--- | Module for converting between boolwan values and strings containing '0's
+-- | Module for converting between boolean values and strings containing '0's
 -- | and '1's
 module RealDice.Convert.BinaryString
   ( boolToBin,
@@ -58,7 +58,7 @@ binToBools :: String -> [Bool]
 binToBools = map binToBool
 
 -- | Converts a string containing '0's and '1's to a list of Bools, ignoring
--- | any characters that are not '0' or '1'
+--   any characters that are not '0' or '1'
 
 -- | ==== __Examples__
 -- >>> stringToBools "1011"
@@ -67,8 +67,7 @@ binToBools = map binToBool
 -- [True, False, True]
 -- >>> stringToBools "Hello, Haskell!"
 -- []
--- >>> stringToBools "On the 10th of March, 1901, Hacksell Kerry placed 21st\n\
--- \ in the 100m dash, with a time of 12.3 seconds, wearing the number 101"
+-- >>> stringToBools "On the 10th of March, 1901, Hacksell Kerry placed 21st\n\ \ in the 100m dash, with a time of 12.3 seconds, wearing the number 101"
 -- [True, False, True, False, True, True, True, False, False, True, True, False, True]
 stringToBools :: String -> [Bool]
 stringToBools = acc []

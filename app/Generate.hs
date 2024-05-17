@@ -6,10 +6,10 @@ import RealDice.Manipulate (randomizeWithCustomBools)
 import StdGenRandomize (randomizeList)
 
 -- | Verify that a list of Ints has the same length as a list of Bools before
--- | running a function on them.
+--   running a function on them.
 
 -- | This is used to make sure that there is an Int in the pseudo-randomized
--- | seed list for each Bool in the RealDice raw data.
+--   seed list for each Bool in the RealDice raw data.
 checkLengths :: ([Int] -> [Bool] -> [Int]) -> [Int] -> [Bool] -> [Int]
 checkLengths f l1 l2 = do
   if length l1 == length l2
@@ -23,14 +23,14 @@ checkLengths f l1 l2 = do
         )
 
 -- | Prime-length list of integers randomized with StdGen, for use as a seed
--- | when generating the RealDice balanced data
+--   when generating the RealDice balanced data
 psRndIntsPrime :: [Int]
 psRndIntsPrime =
   randomizeList
     [1 .. length RealDice.Generate.rawBoolPrime]
 
 -- | Full-length list of integers randomized with StdGen, for use as a seed
--- | when generating the RealDice balanced data
+--   when generating the RealDice balanced data
 psRndIntsFull :: [Int]
 psRndIntsFull =
   randomizeList
@@ -72,7 +72,7 @@ rdBinFull = boolsToBin rdBoolsFull
 balancedTables :: String
 balancedTables =
   "-- | This module contains balanced tables randomized with the RealDice \n\
-  \-- | raw data\n\
+  \--   raw data\n\
   \module RealDice.Generate.BalancedTables\n\
   \  ( rdBoolsPrime,\n\
   \    rdBoolsFull,\n\
@@ -122,7 +122,7 @@ balancedTables =
 pseudoRandomizedInts :: String
 pseudoRandomizedInts =
   "-- | This module contains pseudo-randomized integers for use as a seed\n\
-  \-- | when generating the RealDice balanced data\n\
+  \--   when generating the RealDice balanced data\n\
   \module RealDice.Generate.PseudoRandomizedInts\n\
   \  ( psRndIntsPrime,\n\
   \    psRndIntsFull\n\
@@ -130,14 +130,14 @@ pseudoRandomizedInts =
   \where\n\
   \\n\
   \-- | Prime-length list of integers randomized with StdGen, for use as a seed\n\
-  \-- | when generating the RealDice balanced data\n\
+  \--   when generating the RealDice balanced data\n\
   \psRndIntsPrime :: [Int]\n\
   \psRndIntsPrime = "
     ++ show psRndIntsPrime
     ++ "\n\
        \\n\
        \-- | Full-length list of integers randomized with StdGen, for use as a seed\n\
-       \-- | when generating the RealDice balanced data\n\
+       \--   when generating the RealDice balanced data\n\
        \psRndIntsFull :: [Int]\n\
        \psRndIntsFull = "
     ++ show psRndIntsFull

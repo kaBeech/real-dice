@@ -1,6 +1,5 @@
--- \| Used to generate randomized lists for table-based random generation
-
--- | Module for randomizing the order of elements in a list
+-- | Module for randomizing the order of elements in a list.
+--   Used to generate randomized lists for table-based random generation
 module RealDice.Manipulate.RandomizeList
   ( randomizeList,
     randomizeWithCustomBools,
@@ -16,11 +15,19 @@ data RandomState where
   RandomState :: {index :: Int} -> RandomState
 
 -- | Randomizes the order of a list of integers using the default balanced
--- | table of RealDice randomized booleans
+--   table of RealDice randomized booleans
+
+-- | ==== __Examples__
+--   >>> randomizeList [1, 2, 3, 4, 5]
+--   [2, 4, 1, 5, 3]
 randomizeList :: [Int] -> [Int]
 randomizeList xs = randomizeWithCustomBools xs rdBoolsPrime
 
 -- | Randomizes the order of a list of integers using a custom list of booleans
+
+-- | ==== __Examples__
+--   >>> randomizeWithCustomBools [1, 2, 3, 4, 5] [True, False, True, False, True]
+--   [1, 3, 5, 2, 4]
 randomizeWithCustomBools :: [Int] -> [Bool] -> [Int]
 randomizeWithCustomBools xs boolList =
   evalState

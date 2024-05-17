@@ -1,5 +1,4 @@
--- | Core RealDice module
--- | Excludes the Convert and Util modules
+-- | Core RealDice module. Excludes the Convert and Util modules
 module RealDice
   ( module RealDice.Coin,
     module RealDice.Die,

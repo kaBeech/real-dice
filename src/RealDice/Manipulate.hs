@@ -1,5 +1,5 @@
--- | This module re-exports the functions used to manipulate RNG tables and
--- | other lists of data
+-- | This module re-exports functions used to manipulate RNG tables and
+--   other lists of data
 module RealDice.Manipulate
   ( module RealDice.Manipulate.GetValueFromRNGTable,
     module RealDice.Manipulate.RandomizeList,
