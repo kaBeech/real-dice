@@ -1,3 +1,5 @@
+-- | This module contains the raw RealDice random data gathered from human
+-- | interaction with physical media
 module RealDice.Generate.RawData
   ( rawBoolPrime,
     rawBoolFull,

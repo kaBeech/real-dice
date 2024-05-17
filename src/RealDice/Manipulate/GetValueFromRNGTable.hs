@@ -1,3 +1,7 @@
+-- \| These functions are used to get values from randomized tables for random
+-- \| generation purposes
+
+-- | This module contains functions that get values from a list
 module RealDice.Manipulate.GetValueFromRNGTable
   ( getBoolByIndex,
     getIntByIndex,

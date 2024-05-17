@@ -1,3 +1,5 @@
+-- | This module provides functions to convert between lists of integers and
+-- | strings suitable for use in CSV files
 module RealDice.Convert.CSV
   ( intsToCSV,
     csvToInts,

@@ -1,3 +1,6 @@
+-- | This module provides the DieGen data type and functions for using Dice to
+-- | generate random positive integers via balanced tables randomized by the
+-- | RealDice data or custom integer tables
 module RealDice.Die (DieGen, roll1d, mkDieGen, mkDieGenCustom) where
 
 import RealDice.Generate.BalancedTables (rdIntsPrime)

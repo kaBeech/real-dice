@@ -1,3 +1,6 @@
+-- \| Used to generate randomized lists for table-based random generation
+
+-- | Module for randomizing the order of elements in a list
 module RealDice.Manipulate.RandomizeList
   ( randomizeList,
     randomizeWithCustomBools,

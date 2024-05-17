@@ -1,3 +1,5 @@
+-- | Module for finding the greatest prime number that is less than or equal to
+-- | a given number
 module RealDice.Util.Prime (greatestPrimeNotGreaterThan) where
 
 import Data.Numbers.Primes (isPrime)

@@ -1,3 +1,5 @@
+-- | Module for converting between boolwan values and strings containing '0's
+-- | and '1's
 module RealDice.Convert.BinaryString
   ( boolToBin,
     boolsToBin,

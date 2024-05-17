@@ -71,7 +71,9 @@ rdBinFull = boolsToBin rdBoolsFull
 -- | The balanced tables for the RealDice library
 balancedTables :: String
 balancedTables =
-  "module RealDice.Generate.BalancedTables\n\
+  "-- | This module contains balanced tables randomized with the RealDice \n\
+  \-- | raw data\n\
+  \module RealDice.Generate.BalancedTables\n\
   \  ( rdBoolsPrime,\n\
   \    rdBoolsFull,\n\
   \    rdIntsPrime,\n\
@@ -119,7 +121,9 @@ balancedTables =
 -- | Pseudo-randomized integers generated for the RealDice library
 pseudoRandomizedInts :: String
 pseudoRandomizedInts =
-  "module RealDice.Generate.PseudoRandomizedInts\n\
+  "-- | This module contains pseudo-randomized integers for use as a seed\n\
+  \-- | when generating the RealDice balanced data\n\
+  \module RealDice.Generate.PseudoRandomizedInts\n\
   \  ( psRndIntsPrime,\n\
   \    psRndIntsFull\n\
   \  )\n\
