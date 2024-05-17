@@ -29,7 +29,7 @@ synopsis:
 
 -- A longer description of the package.
 description:
-    This package provides random data gethered via human interaction with the physical world as well as utilities to leverage this data for random number generation and other RNG-based tasks
+    This package provides random data gathered via human interaction with the physical world as well as utilities to leverage this data for random number generation and other RNG-based tasks
 -- URL for the project homepage or repository.
 homepage:           https://github.com/kaBeech/real-dice
 
@@ -46,7 +46,7 @@ author:             Kyle Beechly
 maintainer:         contact@kaBeech.com
 
 -- A copyright notice.
--- copyright:
+copyright:
 category:           Math,
                     Data
 build-type:         Simple
