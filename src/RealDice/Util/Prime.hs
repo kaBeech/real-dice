@@ -21,7 +21,7 @@ import Data.Numbers.Primes (isPrime)
 --   1
 --   >>> greatestPrimeNotGreaterThan 0
 --   0
---   >>> greatestPrimeNotGreaterThan -1024
+--   >>> greatestPrimeNotGreaterThan (-1024)
 --   0
 greatestPrimeNotGreaterThan :: Int -> Int
 greatestPrimeNotGreaterThan n

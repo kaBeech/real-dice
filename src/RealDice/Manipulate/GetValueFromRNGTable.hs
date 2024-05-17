@@ -17,7 +17,7 @@ where
 --   4
 --   >>> getIntByIndex 5 [1, 0, 4, 3, 2]
 --   1
---   >>> getIntByIndex -(1337) [1, 0, 4, 3, 2]
+--   >>> getIntByIndex (-1337) [1, 0, 4, 3, 2]
 --   3
 getIntByIndex :: Int -> [Int] -> Int
 getIntByIndex index l = l !! (index `mod` length l)
@@ -38,7 +38,7 @@ getIntByIndex index l = l !! (index `mod` length l)
 --   False
 --   >>> getBoolByIndex 6 [True, False, False, True, True]
 --   True
---   >>> getBoolByIndex -(1337) [True, False, True, False, True]
+--   >>> getBoolByIndex (-1337) [True, False, True, False, True]
 --   False
 getBoolByIndex :: Int -> [Bool] -> Bool
 getBoolByIndex index l =

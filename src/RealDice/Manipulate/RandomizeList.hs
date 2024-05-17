@@ -27,7 +27,7 @@ randomizeList xs = randomizeWithCustomBools xs rdBoolsPrime
 
 -- | ==== __Examples__
 --   >>> randomizeWithCustomBools [1, 2, 3, 4, 5] [True, False, False, True, True]
---   [1,3,5,2,4]
+--   [5,4,1,2,3]
 randomizeWithCustomBools :: [Int] -> [Bool] -> [Int]
 randomizeWithCustomBools xs boolList =
   evalState

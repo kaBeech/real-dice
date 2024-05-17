@@ -64,7 +64,7 @@ binToBools = map binToBool
 -- >>> stringToBools "1011"
 -- [True,True,False,True]
 -- >>> stringToBools "1012"
--- [True, False, True]
+-- [True,False,True]
 -- >>> stringToBools "Hello, Haskell!"
 -- []
 -- >>> stringToBools "On the 10th of March, 1901, Hacksell Kerry placed 21st\n\ \ in the 100m dash, with a time of 12.3 seconds, wearing the number 101"
