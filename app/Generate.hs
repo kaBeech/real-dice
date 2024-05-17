@@ -5,8 +5,11 @@ import RealDice.Generate (rawBoolFull, rawBoolPrime)
 import RealDice.Manipulate (randomizeWithCustomBools)
 import StdGenRandomize (randomizeList)
 
--- | Verify that a list of Ints has the same length as a list of Bools before running a function on them.
---   This is used to make sure that there is an Int in the pseudo-randomized seed list for each Bool in the RealDice raw data.
+-- | Verify that a list of Ints has the same length as a list of Bools before
+-- | running a function on them.
+
+-- | This is used to make sure that there is an Int in the pseudo-randomized
+-- | seed list for each Bool in the RealDice raw data.
 checkLengths :: ([Int] -> [Bool] -> [Int]) -> [Int] -> [Bool] -> [Int]
 checkLengths f l1 l2 = do
   if length l1 == length l2
@@ -19,16 +22,18 @@ checkLengths f l1 l2 = do
             ++ show (length l2)
         )
 
--- | Prime-length list of integers randomized with StdGen
+-- | Prime-length list of integers randomized with StdGen, for use as a seed
+-- | when generating the RealDice balanced data
 psRndIntsPrime :: [Int]
 psRndIntsPrime =
-  randomizeList -- I feel it's okay to use StdGen to generate the files, as long as it's not used in the library itself
+  randomizeList
     [1 .. length RealDice.Generate.rawBoolPrime]
 
--- | Full-length list of integers randomized with StdGen
+-- | Full-length list of integers randomized with StdGen, for use as a seed
+-- | when generating the RealDice balanced data
 psRndIntsFull :: [Int]
 psRndIntsFull =
-  randomizeList -- I feel it's okay to use StdGen to generate the files, as long as it's not used in the library itself
+  randomizeList
     [1 .. length RealDice.Generate.rawBoolFull]
 
 -- | Prime-length list of integers randomized with the RealDice raw data
@@ -76,31 +81,37 @@ balancedTables =
   \  )\n\
   \where\n\
   \\n\
+  \-- | Prime-length list of integers randomized with the RealDice raw data\n\
   \rdIntsPrime :: [Int]\n\
   \rdIntsPrime = "
     ++ show rdIntsPrime
     ++ "\n\
        \\n\
+       \-- | Full-length list of integers randomized with the RealDice raw data\n\
        \rdIntsFull :: [Int]\n\
        \rdIntsFull = "
     ++ show rdIntsFull
     ++ "\n\
        \\n\
+       \-- | Prime-length balanced list of Bools randomized with the RealDice raw data\n\
        \rdBoolsPrime :: [Bool]\n\
        \rdBoolsPrime = "
     ++ show rdBoolsPrime
     ++ "\n\
        \\n\
+       \-- | Full-length balanced list of Bools randomized with the RealDice raw data\n\
        \rdBoolsFull :: [Bool]\n\
        \rdBoolsFull = "
     ++ show rdBoolsFull
     ++ "\n\
        \\n\
+       \-- | Prime-length balaned binary string randomized with the RealDice raw data\n\
        \rdBinPrime :: String\n\
        \rdBinPrime = "
     ++ show rdBinPrime
     ++ "\n\
        \\n\
+       \-- | Full-length balanced binary string randomized with the RealDice raw data\n\
        \rdBinFull :: String\n\
        \rdBinFull = "
     ++ show rdBinFull
@@ -114,11 +125,15 @@ pseudoRandomizedInts =
   \  )\n\
   \where\n\
   \\n\
+  \-- | Prime-length list of integers randomized with StdGen, for use as a seed\n\
+  \-- | when generating the RealDice balanced data\n\
   \psRndIntsPrime :: [Int]\n\
   \psRndIntsPrime = "
     ++ show psRndIntsPrime
     ++ "\n\
        \\n\
+       \-- | Full-length list of integers randomized with StdGen, for use as a seed\n\
+       \-- | when generating the RealDice balanced data\n\
        \psRndIntsFull :: [Int]\n\
        \psRndIntsFull = "
     ++ show psRndIntsFull

@@ -4,7 +4,8 @@ module RealDice.Convert.CSV
   )
 where
 
--- | Remove the square brackets `[]` from the string representations of a list so it can be used as a CSV string.
+-- | Remove the square brackets `[]` from the string representations of a list
+-- | so it can be used as a CSV string.
 
 -- | ==== __Examples__
 --   >>> intsToCSV [1,2,3]
@@ -12,7 +13,8 @@ where
 intsToCSV :: [Int] -> String
 intsToCSV xs = tail (take (length (show xs) - 1) (show xs))
 
--- | Add square brackets `[]` to a CSV string of integers and make it into a list
+-- | Add square brackets `[]` to a CSV string of integers and make it into
+-- | a list
 
 -- | ==== __Examples__
 --   >>> csvToInts "1,2,3"

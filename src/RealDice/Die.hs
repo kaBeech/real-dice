@@ -4,24 +4,38 @@ import RealDice.Generate.BalancedTables (rdIntsPrime)
 import RealDice.Manipulate.GetValueFromRNGTable (getIntByIndex)
 import RealDice.Manipulate.RandomizeList (randomizeList)
 
--- | Stores a balanced table of random integers and an index pointing at the next value to return
+-- | Stores a balanced table of random integers and an index pointing at the
+-- | next value to return
 data DieGen where
   DieGen :: {index :: Int, intTable :: [Int]} -> DieGen
 
 -- | Creates a new DieGen with the given index and the default Int table
+
+-- | ==== __Examples__
+-- >>> mkDieGen 143
+-- {143, rdIntsPrime}
 mkDieGen :: Int -> DieGen
 mkDieGen i = mkDieGenCustom i rdIntsPrime
 
 -- | Creates a new DieGen with the given index and Int table
+
+-- | Defaults to the RealDice balanced table of random integers if an empty
+-- | list is given
+
+-- | ==== __Examples__
+-- >>> mkDieGenCustom 143 [1, 0, 4, 3, 2]
+-- {143, [1, 0, 4, 3, 2]}
+-- >>> mkDieGenCustom 143 []
+-- {143, rdIntsPrime}
 mkDieGenCustom :: Int -> [Int] -> DieGen
 mkDieGenCustom i [] = DieGen {index = i, intTable = rdIntsPrime}
 mkDieGenCustom i table = DieGen {index = i, intTable = table}
 
--- | Generates random integer values via a simple table lookup
+-- | Generates a random integer value between 1 and n via a simple table lookup
 
 -- | ==== __Examples__
 --   >>> roll1d 20 (mkDieGen 143)
---   A random integer between 1 and 20 and the updated DieGen with an index of 144
+--   (12, {144, rdIntsPrime})
 roll1d ::
   -- | The number of sides on the die
   Int ->
