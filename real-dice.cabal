@@ -56,7 +56,12 @@ extra-doc-files:    README.md,
                     CHANGELOG.md
 
 -- Extra source files to be distributed with the package, such as examples, or a tutorial module.
--- extra-source-files:
+extra-source-files: data-generated/*.bin,
+                    data-generated/*.csv
+
+source-repository head
+    type:           git
+    location:       https://github.com/kaBeech/real-dice
 
 common warnings
     ghc-options: -Wall
