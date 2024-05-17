@@ -16,7 +16,7 @@ import Data.Numbers.Primes (isPrime)
 --   >>> greatestPrimeNotGreaterThan 10
 --   7
 --   >>> greatestPrimeNotGreaterThan 1024
---   1019
+--   1021
 --   >>> greatestPrimeNotGreaterThan 1
 --   1
 --   >>> greatestPrimeNotGreaterThan 0
