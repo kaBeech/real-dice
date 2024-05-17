@@ -13,9 +13,9 @@ data CoinGen where
 
 -- | Creates a new CoinGen with the given index and the default bool table
 
--- | ==== __Examples__
---  >>> mkCoinGen 143
---  {143, rdBoolsPrime}
+-- | \$ __Examples__
+--   >>> mkCoinGen 143
+--   {143, rdBoolsPrime}
 mkCoinGen :: Int -> CoinGen
 mkCoinGen i = mkCoinGenCustom i rdBoolsPrime
 
@@ -24,7 +24,7 @@ mkCoinGen i = mkCoinGenCustom i rdBoolsPrime
 -- | Defaults to the RealDice balanced table of random booleans if an empty
 --   list is given
 
--- | ==== __Examples__
+-- | \$ __Examples__
 --   >>> mkCoinGenCustom 143 [True, False, False, True, True]
 --   {143, [True, False, False, True, True]}
 --   >>> mkCoinGenCustom 143 []
@@ -35,7 +35,7 @@ mkCoinGenCustom i table = CoinGen {index = i, boolTable = table}
 
 -- | Generates a random boolean value via a simple table lookup
 
--- | ==== __Examples__
+-- | \$ __Examples__
 --   >>> flipCoin (mkDieGen 143)
 --   (False, {144, rdBoolsPrime})
 flipCoin :: CoinGen -> (Bool, CoinGen)
