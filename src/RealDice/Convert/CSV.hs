@@ -13,7 +13,7 @@ where
 --   >>> intsToCSV [1,2,3]
 --   "1,2,3"
 intsToCSV :: [Int] -> String
-intsToCSV xs = tail (take (length (show xs) - 1) (show xs))
+intsToCSV xs = drop 1 (take (length (show xs) - 1) (show xs))
 
 -- | Add square brackets `[]` to a CSV string of integers and make it into
 --   a list

@@ -43,11 +43,11 @@ randomizeListWithCustomBoolListSinglePass l l' boolList = do
   if getBoolByIndex (index random) boolList
     then
       randomizeListWithCustomBoolListSinglePass
-        (tail l)
+        (drop 1 l)
         (head l : l')
         boolList
     else
       randomizeListWithCustomBoolListSinglePass
-        (tail l)
+        (drop 1 l)
         (l' ++ [head l])
         boolList
