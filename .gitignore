@@ -1,4 +1,5 @@
 .scratch
+cabal.project.freeze
 dist
 dist-*
 cabal-dev
