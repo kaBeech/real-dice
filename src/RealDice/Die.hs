@@ -1,3 +1,6 @@
+-- | This module provides the DieGen data type and functions for using Dice to
+--   generate random positive integers via balanced tables randomized by the
+--   RealDice data or custom integer tables
 module RealDice.Die (DieGen, roll1d, mkDieGen, mkDieGenCustom) where
 
 import RealDice.Generate.BalancedTables (rdIntsPrime)
@@ -5,28 +8,28 @@ import RealDice.Manipulate.GetValueFromRNGTable (getIntByIndex)
 import RealDice.Manipulate.RandomizeList (randomizeList)
 
 -- | Stores a balanced table of random integers and an index pointing at the
--- | next value to return
+--   next value to return
 data DieGen where
   DieGen :: {index :: Int, intTable :: [Int]} -> DieGen
 
 -- | Creates a new DieGen with the given index and the default Int table
 
 -- | ==== __Examples__
--- >>> mkDieGen 143
--- {143, rdIntsPrime}
+--   >>> mkDieGen 143
+--   {143, rdIntsPrime}
 mkDieGen :: Int -> DieGen
 mkDieGen i = mkDieGenCustom i rdIntsPrime
 
 -- | Creates a new DieGen with the given index and Int table
 
 -- | Defaults to the RealDice balanced table of random integers if an empty
--- | list is given
+--   list is given
 
 -- | ==== __Examples__
--- >>> mkDieGenCustom 143 [1, 0, 4, 3, 2]
--- {143, [1, 0, 4, 3, 2]}
--- >>> mkDieGenCustom 143 []
--- {143, rdIntsPrime}
+--   >>> mkDieGenCustom 143 [1, 0, 4, 3, 2]
+--   {143, [1, 0, 4, 3, 2]}
+--   >>> mkDieGenCustom 143 []
+--   {143, rdIntsPrime}
 mkDieGenCustom :: Int -> [Int] -> DieGen
 mkDieGenCustom i [] = DieGen {index = i, intTable = rdIntsPrime}
 mkDieGenCustom i table = DieGen {index = i, intTable = table}

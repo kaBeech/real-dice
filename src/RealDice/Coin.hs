@@ -1,10 +1,13 @@
+-- | This module exports the CoinGen data type and functions for flipping Coins
+--   to generate random boolean values via balanced tables randomized by the
+--   RealDice data or custom boolean tables
 module RealDice.Coin (CoinGen, flipCoin, mkCoinGen, mkCoinGenCustom) where
 
 import RealDice.Generate.BalancedTables (rdBoolsPrime)
 import RealDice.Manipulate.GetValueFromRNGTable (getBoolByIndex)
 
 -- | Stores a balanced table of random boolean values and an index pointing to
--- | the next value to return
+--   the next value to return
 data CoinGen where
   CoinGen :: {index :: Int, boolTable :: [Bool]} -> CoinGen
 
@@ -19,13 +22,13 @@ mkCoinGen i = mkCoinGenCustom i rdBoolsPrime
 -- | Creates a new CoinGen with the given index and bool table
 
 -- | Defaults to the RealDice balanced table of random booleans if an empty
--- | list is given
+--   list is given
 
 -- | ==== __Examples__
--- >>> mkCoinGenCustom 143 [True, False, False, True, True]
--- {143, [True, False, False, True, True]}
--- >>> mkCoinGenCustom 143 []
--- {143, rdBoolsPrime}
+--   >>> mkCoinGenCustom 143 [True, False, False, True, True]
+--   {143, [True, False, False, True, True]}
+--   >>> mkCoinGenCustom 143 []
+--   {143, rdBoolsPrime}
 mkCoinGenCustom :: Int -> [Bool] -> CoinGen
 mkCoinGenCustom i [] = CoinGen {index = i, boolTable = rdBoolsPrime}
 mkCoinGenCustom i table = CoinGen {index = i, boolTable = table}
