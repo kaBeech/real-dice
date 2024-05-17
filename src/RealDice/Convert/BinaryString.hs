@@ -74,6 +74,6 @@ stringToBools = acc []
   where
     acc :: [Bool] -> String -> [Bool]
     acc boolList [] = boolList
-    acc boolList ('0' : xs) = acc (False : boolList) xs
-    acc boolList ('1' : xs) = acc (True : boolList) xs
+    acc boolList ('0' : xs) = acc (boolList ++ [False]) xs
+    acc boolList ('1' : xs) = acc (boolList ++ [True]) xs
     acc boolList (_ : xs) = acc boolList xs
