@@ -32,7 +32,7 @@ import RealDice.Generate.RawData (rawBinFull, rawBinPrime)
 
 -- | In the future, functionality will be added to check for valid seed files
 -- | in the `data-seed/` directory. If such data is found it will be randomized
--- | with the RealDice data to produce custotom data files in the
+-- | with the RealDice data to produce custom data files in the
 -- | `generate-data/` directory
 
 -- | If you would like to do this yourself now, it can be accomplished by using

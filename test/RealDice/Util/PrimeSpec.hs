@@ -6,7 +6,7 @@ module RealDice.Util.PrimeSpec
     result_is_prime,
     next_largest_prime_is_larger_than_input,
     inputs_lower_than_1_return_0,
-    result_equals_result_from_equivalnt_function,
+    result_equals_result_from_equivalent_function,
   )
 where
 
@@ -29,7 +29,7 @@ next_largest_prime_is_larger_than_input n = do
 inputs_lower_than_1_return_0 :: Int -> Property
 inputs_lower_than_1_return_0 n = n < 1 ==> greatestPrimeNotGreaterThan n == 0
 
-result_equals_result_from_equivalnt_function :: Int -> Property
-result_equals_result_from_equivalnt_function n =
+result_equals_result_from_equivalent_function :: Int -> Property
+result_equals_result_from_equivalent_function n =
   n > 1 ==>
     greatestPrimeNotGreaterThan n == head (filter isPrime [n, n - 1 ..])

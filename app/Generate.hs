@@ -60,7 +60,7 @@ rdBoolsPrime = map odd rdIntsPrime
 rdBoolsFull :: [Bool]
 rdBoolsFull = map odd rdIntsFull
 
--- | Prime-length balaned binary string randomized with the RealDice raw data
+-- | Prime-length balanced binary string randomized with the RealDice raw data
 rdBinPrime :: String
 rdBinPrime = boolsToBin rdBoolsPrime
 
@@ -105,7 +105,7 @@ balancedTables =
     ++ show rdBoolsFull
     ++ "\n\
        \\n\
-       \-- | Prime-length balaned binary string randomized with the RealDice raw data\n\
+       \-- | Prime-length balanced binary string randomized with the RealDice raw data\n\
        \rdBinPrime :: String\n\
        \rdBinPrime = "
     ++ show rdBinPrime
