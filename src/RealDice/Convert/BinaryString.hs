@@ -62,7 +62,7 @@ binToBools = map binToBool
 
 -- | ==== __Examples__
 -- >>> stringToBools "1011"
--- [True,True,False,True]
+-- [True,False,True,True]
 -- >>> stringToBools "1012"
 -- [True,False,True]
 -- >>> stringToBools "Hello, Haskell!"
