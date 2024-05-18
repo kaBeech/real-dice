@@ -8,8 +8,11 @@ import TestCheck (check)
 
 -- | Run the test suite
 
--- | Currently this consists of QuickCheck tests, along with a guard that will
---   cause the test suite to fail if any of the individual tests fail
+-- | In general, functions will either be tested using QuickCheck in this suite
+--   or using Docutest in the files themselves, but not both
+
+-- | This suite of QuickCheck tests contains  a guard that will cause the test
+--   `suite to fail if any of the individual tests fail
 main :: IO ()
 main = do
   putStrLn "Running test suite!"
