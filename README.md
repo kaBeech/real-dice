@@ -20,7 +20,7 @@ Running the executable will produce the standard randomized data as defined in t
 
 ### How does Real\*Dice\* work?
 
-Check the source, [Hackage}(https://hackage.haskell.org/package/real-dice), or Hoogle (Coming Soon!) for documentation! 
+Check the source, [Hackage](https://hackage.haskell.org/package/real-dice), or Hoogle (Coming Soon!) for documentation! 
 
 The RNG system itself is a basic randomized table lookup. If it's good enough for [the most perfect software ever written](https://www.youtube.com/watch?v=pq3x1Jy8pYM&t=32s), it's good enough for me!
 
