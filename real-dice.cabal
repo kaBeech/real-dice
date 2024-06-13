@@ -20,7 +20,7 @@ name:               real-dice
 -- PVP summary:     +-+------- breaking API changes
 --                  | | +----- non-breaking API additions
 --                  | | | +--- code changes with no API change
-version:            0.1.0.2
+version:            0.1.0.3
 
 tested-with:        GHC==9.8.2, 
                     GHC==9.6.4, 
@@ -118,7 +118,7 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base >=4.16.0.0 && <= 4.19.1.0,
+    build-depends:    base >=4.16.0.0 && <= 4.20.0.1,
                       mtl >= 2.2.2 && < 2.4,
                       primes >= 0.2.1 && < 0.3
 
