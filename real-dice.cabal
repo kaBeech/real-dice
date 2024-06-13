@@ -49,6 +49,7 @@ synopsis:
 -- A longer description of the package.
 description:
     This package provides random data gathered via human interaction with the physical world as well as utilities to leverage this data for random number generation and other RNG-based tasks
+
 -- URL for the project homepage or repository.
 homepage:           https://github.com/kaBeech/real-dice
 
@@ -66,8 +67,10 @@ maintainer:         contact@kaBeech.com
 
 -- A copyright notice.
 copyright:          2024 Kyle Beechly
+
 category:           Math,
                     Data
+
 build-type:         Simple
 
 -- Extra doc files to be distributed with the package, such as a CHANGELOG or a README.
@@ -191,4 +194,4 @@ test-suite real-dice-test
         primes,
         mtl,
         extra >= 1.7.15 && < 1.8,
-        QuickCheck >= 2.15 && < 2.16
+        QuickCheck >= 2.14.3 && < 2.16
