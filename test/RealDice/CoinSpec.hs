@@ -4,7 +4,7 @@
 module RealDice.CoinSpec (doesnt_give_same_result_10_times) where
 
 import Control.Monad.State
-import Data.List.Extra
+import Data.List.Extra (allSame)
 import RealDice.Coin (CoinGen, flipCoin, mkCoinGen)
 import Test.QuickCheck
 
