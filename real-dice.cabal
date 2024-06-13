@@ -194,4 +194,4 @@ test-suite real-dice-test
         primes,
         mtl,
         extra >= 1.7.15 && < 1.8,
-        QuickCheck >= 2.15 && < 2.16
+        QuickCheck >= 2.14.3 && < 2.16
