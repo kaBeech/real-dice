@@ -13,3 +13,7 @@
 * Adds wider dependency and version support
 
 * Adds to documentation
+
+## 0.1.0.3 -- 2024-06-13
+
+* Adjusts dependency versioning to add to Stackage
