@@ -1,4 +1,4 @@
-# Real\*Dice\*
+# Real\* Dice\* [![Hackage](https://img.shields.io/hackage/v/real-dice.svg)](https://hackage.haskell.org/package/real-dice)
 
 Random number generation using real dice and other media that I actually touched!
 
