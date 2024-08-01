@@ -4,11 +4,11 @@ Random number generation using real dice and other media that I actually touched
 
 ## Introduction
 
-In celebration of Haskell's determinative nature, this package provides random data from my interaction with the physical world as well as utilities to leverage this data for random number generation and other RNG-based tasks
-
 Sometimes the digital world can feel cold and sterile compared to the messy and unpredictable nature of our physical environment. Purely functional languages like Haskell are, for better and for worse, particularly susceptible to this digital de-messification
 
-This package can be used to bring some analog warmth and a human touch to our digital world
+In celebration of Haskell's determinative nature, this package provides random data from my interaction with the physical world as well as utilities to leverage this data for random number generation and other RNG-based tasks
+
+This package can be used to bring a human touch to our digital world
 
 ## Use
 
