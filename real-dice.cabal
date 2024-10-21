@@ -147,7 +147,7 @@ executable real-dice
         base,
         mtl,
         random >= 1.2.1 && < 1.3,
-        real-dice
+        real-dice >= 0.1 && < 0.2,
 
     -- Directories containing source files.
     hs-source-dirs:   app
