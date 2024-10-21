@@ -1,4 +1,4 @@
-name: Build Tensort
+name: Build real-dice
 on:
   push:
     branches: [main]
