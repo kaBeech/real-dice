@@ -1,3 +1,5 @@
+{-# LANGUAGE GADTs #-}
+
 -- | Module for randomizing the order of elements in a list.
 --   Used to generate randomized lists for table-based random generation
 module RealDice.Manipulate.RandomizeList

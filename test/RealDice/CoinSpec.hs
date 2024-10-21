@@ -1,6 +1,8 @@
+{-# LANGUAGE GADTs #-}
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 
 {-# HLINT ignore "Use camelCase" #-}
+
 module RealDice.CoinSpec (doesnt_give_same_result_10_times) where
 
 import Control.Monad.State

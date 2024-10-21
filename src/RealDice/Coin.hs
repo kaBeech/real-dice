@@ -1,3 +1,5 @@
+{-# LANGUAGE GADTs #-}
+
 -- | This module exports the CoinGen data type and functions for flipping Coins
 --   to generate random boolean values via balanced tables randomized by the
 --   RealDice data or custom boolean tables
