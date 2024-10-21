@@ -1,6 +1,6 @@
 module TestCheck (isPass, check) where
 
-import Control.Monad qualified
+import qualified Control.Monad
 import System.Exit
 import Test.QuickCheck
 

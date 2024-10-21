@@ -1,3 +1,5 @@
+{-# LANGUAGE GADTs #-}
+
 module StdGenRandomize (randomizeList) where
 
 import Control.Monad.State

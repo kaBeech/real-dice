@@ -17,3 +17,11 @@
 ## 0.1.0.3 -- 2024-06-13
 
 * Adjusts dependency versioning to add to Stackage
+
+## 0.1.0.4 -- 2024-10-21
+
+* Supports extra-1.8
+
+* Supports Haskell2010
+
+* Updates CI

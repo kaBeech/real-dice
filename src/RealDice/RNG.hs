@@ -1,3 +1,5 @@
+{-# LANGUAGE GADTs #-}
+
 -- | This module provides functions to generate random numbers using balanced
 --   integer tables randomized by the RealDice data or custom integer tables
 module RealDice.RNG
