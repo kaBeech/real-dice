@@ -20,7 +20,7 @@ name:               real-dice
 -- PVP summary:     +-+------- breaking API changes
 --                  | | +----- non-breaking API additions
 --                  | | | +--- code changes with no API change
-version:            0.1.0.4
+version:            0.1.0.5
 
 tested-with:        GHC==9.12.1, 
                     GHC==9.10.1, 
