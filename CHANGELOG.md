@@ -28,6 +28,6 @@
 
 ## 0.1.0.5 -- 2025-01-07
 
-* Supports random-1.4
+* Supports up to random-1.4 and base-4.22
 
-* Tests with GHC 9.8.4 and GHC 9.12.1
+* Tests with GHC 9.8, GHC 9.10, and GHC 9.12 
