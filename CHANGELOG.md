@@ -29,3 +29,5 @@
 ## 0.1.0.5 -- 2025-01-07
 
 * Supports random-1.4
+
+* Tests with GHC 9.8.4 and GHC 9.12.1
