@@ -22,7 +22,9 @@ name:               real-dice
 --                  | | | +--- code changes with no API change
 version:            0.1.0.4
 
-tested-with:        GHC==9.8.2, 
+tested-with:        GHC==9.12.1, 
+                    GHC==9.10.1, 
+                    GHC==9.8.4, 
                     GHC==9.6.4, 
                     GHC==9.4.8,
                     GHC==9.2.8,
@@ -118,7 +120,7 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base >=4.12.0.0 && <= 4.20.0.1,
+    build-depends:    base >=4.12.0.0 && < 4.22,
                       mtl >= 2.2.2 && < 2.4,
                       primes >= 0.2.1 && < 0.3
 
@@ -146,7 +148,7 @@ executable real-dice
     build-depends:
         base,
         mtl,
-        random >= 1.2.1 && < 1.3,
+        random >= 1.2.1 && < 1.4,
         real-dice
 
     -- Directories containing source files.
