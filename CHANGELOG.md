@@ -25,3 +25,7 @@
 * Supports Haskell2010
 
 * Updates CI
+
+## 0.1.0.5 -- 2025-01-07
+
+* Supports random-1.4
